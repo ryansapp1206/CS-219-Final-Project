@@ -30,7 +30,7 @@ Everything you need is written into each step, so you shouldn't have to hunt thr
 - [ ] Agree with Teammate 1 that you're Teammate 2, and tell Ryan.
 - [ ] Install Node.js 20.6 or newer from nodejs.org (the LTS version). Check it with `node -v` in a terminal.
 - [ ] Accept Ryan's GitHub invite and clone the repo.
-- [x] Once Ryan has pushed the server, save the `.env` file he sends you in the same folder as `server.js`. Never commit it.
+- [ ] Once Ryan has pushed the server, save the `.env` file he sends you in the same folder as `server.js`. Never commit it.
 - [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account. If anything fails, tell Ryan.
 - [ ] Open the prototype's Availability and Settings screens and the booking page screenshots. Note how each looks; Step 13's versions are placeholders you'll replace.
 
