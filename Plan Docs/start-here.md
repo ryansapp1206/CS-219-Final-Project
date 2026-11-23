@@ -10,7 +10,7 @@ There are two frontend roles, and you each take one.
 
 1. In the [Team Plan](team-plan.md), read only **Who does what**, and only the Teammate 1 and Teammate 2 parts.
 2. Decide between you who is Teammate 1 (the existing pages) and who is Teammate 2 (the new pages and the booking page).
-3. Look at your sections of the Task List (Step 3 below says which), agree with each other on who takes what, then tell Ryan so he can record it.
+3. Skim your checklist (Step 3 below), agree with each other on who takes what, then tell Ryan so he can record it.
 
 ## Step 2, by Wednesday, November 25: get the app running
 
@@ -24,9 +24,9 @@ The goal is to sign in to the app on your own laptop. You don't need to understa
 
 If any of this fails, tell Ryan. Setup problems are his to fix, not yours.
 
-## Step 3: your part of the Task List
+## Step 3: follow your checklist
 
-In the [Task List](task-list.md), read only your sections. Each task has a number, a size and what it needs first.
+Once you've picked, your whole job is one checklist, in order, with every detail written in: the [Teammate 1 Checklist](teammate-1.md) or the [Teammate 2 Checklist](teammate-2.md). Tick each box as you finish. Here's what each one covers:
 
 | | Teammate 1 | Teammate 2 |
 | --- | --- | --- |
@@ -47,7 +47,7 @@ Open these only when the question comes up.
 | What data will my page get from the server? | [Team Plan](team-plan.md), **API contract**, "Example responses". Build with that sample data until Ryan's route is ready |
 | What am I allowed to touch? | [Team Plan](team-plan.md), **Rules for the frontend** (four rules, just under the API table) |
 
-The frontend rules in short: every request goes through `apiRequest()`, field names match the contract exactly, and you never edit `server.js`, `database.js` or `app.js`; ask Ryan instead.
+The frontend rules in short: on the signed-in pages every request goes through `apiRequest()`, field names match the contract exactly, and you never edit `server.js`, `database.js` or `app.js`; ask Ryan instead.
 
 ## Step 5, every few days: habits and deadlines
 

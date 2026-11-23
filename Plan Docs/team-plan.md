@@ -15,7 +15,7 @@ We're building SimpleSchedule: a web app where a host signs up, sets weekly hour
 | Graded besides the app | Commit history, README with 7 required items, the live demo |
 | Starter code | Teacher's [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo |
 
-The full requirements are in the Final Project assignment on Blackboard. The other planning docs are [Start here](start-here.md), the [Task List](task-list.md) and [Snippet steps](snippet-steps.md).
+The full requirements are in the Final Project assignment on Blackboard. The other planning docs are [Start here](start-here.md), the [Teammate 1 Checklist](teammate-1.md), the [Teammate 2 Checklist](teammate-2.md), the [Task List](task-list.md) and [Snippet steps](snippet-steps.md).
 
 ## Getting started
 
@@ -183,7 +183,7 @@ Every route sends and returns JSON. "Sign-in" means the request carries `Authori
 
 **Rules for the frontend**
 
-1. Every request goes through `apiRequest()` in `app.js`. No `fetch` calls of your own.
+1. On the four signed-in pages, every request goes through `apiRequest()` in `app.js`. No `fetch` calls of your own there. The sign-in pages and the public booking page keep their own fetch calls, as in Step 13, because nobody is signed in on them.
 2. Use the field names in this section exactly.
 3. Don't edit `server.js`, `database.js` or `app.js`. Ask Ryan instead.
 4. Show what the server returns. Deciding which times are free, or blocking double bookings, is the server's job.
