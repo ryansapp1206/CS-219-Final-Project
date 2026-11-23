@@ -15,11 +15,11 @@ We're building SimpleSchedule: a web app where a host signs up, sets weekly hour
 | Graded besides the app | Commit history, README with 7 required items, the live demo |
 | Starter code | Teacher's [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo |
 
-The full requirements are in the Final Project assignment on Blackboard. The other planning docs are the [Task List](task-list.md) and [Snippet steps](snippet-steps.md).
+The full requirements are in the Final Project assignment on Blackboard. The other planning docs are [Start here](start-here.md), the [Task List](task-list.md) and [Snippet steps](snippet-steps.md).
 
-## Before you leave today
+## Getting started
 
-By the end of today's meeting, each of you should know your pages, your first task, and when you next check in.
+Before anyone starts building, each of us should know our pages, our first task, and when we next check in.
 
 - [x] Look up the due date on Blackboard and add it to the Overview
 - [ ] Teammates choose the Teammate 1 or Teammate 2 role below (swap pages if you like), agree on tasks between yourselves, then tell Ryan so he can fill in the Owner column of the Task List
