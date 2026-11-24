@@ -1,4 +1,4 @@
-# Teammate 1 Checklist: Existing Pages
+# Ben Checklist: Existing Pages
 
 Updated November 23, 2026
 
@@ -25,7 +25,7 @@ Everything you need is written into each step, so you shouldn't have to hunt thr
 
 ## Setup: by Wednesday, November 25
 
-- [ ] Agree with Teammate 2 that you're Teammate 1, and tell Ryan.
+- [ ] Agree with Teammate 2 that you're Ben, and tell Ryan.
 - [ ] Install Node.js 20.6 or newer from nodejs.org (the LTS version). Check it with `node -v` in a terminal.
 - [ ] Accept Ryan's GitHub invite and clone the repo.
 - [ ] Once Ryan has pushed the server, save the `.env` file he sends you in the same folder as `server.js`. Never commit it.
