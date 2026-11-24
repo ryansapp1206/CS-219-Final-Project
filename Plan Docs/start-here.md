@@ -8,8 +8,8 @@ You don't need to read all three plan docs. Follow these steps in order; each on
 
 There are two frontend roles, and you each take one.
 
-1. In the [Team Plan](team-plan.md), read only **Who does what**, and only the Teammate 1 and Teammate 2 parts.
-2. Decide between you who is Teammate 1 (the existing pages) and who is Teammate 2 (the new pages and the booking page).
+1. In the [Team Plan](team-plan.md), read only **Who does what**, and only the Ben and Abou parts.
+2. Decide between you who is Ben (the existing pages) and who is Abou (the new pages and the booking page).
 3. Skim your checklist (Step 3 below), agree with each other on who takes what, then tell Ryan so he can record it.
 
 ## Step 2, by Wednesday, November 25: get the app running
@@ -26,15 +26,15 @@ If any of this fails, tell Ryan. Setup problems are his to fix, not yours.
 
 ## Step 3: follow your checklist
 
-Once you've picked, your whole job is one checklist, in order, with every detail written in: the [Teammate 1 Checklist](teammate-1.md) or the [Teammate 2 Checklist](teammate-2.md). Tick each box as you finish. Here's what each one covers:
+Once you've picked, your whole job is one checklist, in order, with every detail written in: the [Ben Checklist](teammate-1.md) or the [Abou Checklist](teammate-2.md). Tick each box as you finish. Here's what each one covers:
 
-| | Teammate 1 | Teammate 2 |
+| | Ben | Abou |
 | --- | --- | --- |
 | Your sections | Shared files; index.html, register.html, reset.html; dashboard.html; appointments.html; Presentation and demo | availability.html; settings.html; booking.html; README |
 | Start with | L1: split `dashboard.html` into one file per page, and push it the same day | V1: the Availability layout, once L1 is pushed |
 | Then | L3 (`style.css`), L4 (sidebar), then A1–A4 | T1 (Settings layout), then B1 (booking page layout) |
 
-Teammate 2 waits on L1 only briefly, so Teammate 1 should do it first. If you swap pages, swap the rows too.
+Abou waits on L1 only briefly, so Ben should do it first. If you swap pages, swap the rows too.
 
 ## Step 4, while you build: where to look
 
