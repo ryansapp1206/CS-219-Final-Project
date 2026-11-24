@@ -8,21 +8,21 @@ We're building SimpleSchedule: a web app where a host signs up, sets weekly hour
 
 | Item | Detail |
 | --- | --- |
-| Team | Ryan (backend) and two teammates (frontend, README, presentation) |
+| Team | Ryan (backend), Ben, and Abou (frontend, README, presentation) |
 | Stack | HTML, CSS, JavaScript; Node.js; MongoDB; Git and GitHub |
 | Due date | Tuesday, December 8, 2026, 11:59 PM Eastern (Blackboard) |
 | Presentation | 8–10 minutes with a live demo; late days can't be used |
 | Graded besides the app | Commit history, README with 7 required items, the live demo |
 | Starter code | Teacher's [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo |
 
-The full requirements are in the Final Project assignment on Blackboard. The other planning docs are [Start here](start-here.md), the [Teammate 1 Checklist](teammate-1.md), the [Teammate 2 Checklist](teammate-2.md), the [Task List](task-list.md) and [Snippet steps](snippet-steps.md).
+The full requirements are in the Final Project assignment on Blackboard. The other planning docs are [Start here](start-here.md), the [Ben Checklist](ben.md), the [Abou Checklist](abou.md), the [Task List](task-list.md) and [Snippet steps](snippet-steps.md).
 
 ## Getting started
 
 Before anyone starts building, each of us should know our pages, our first task, and when we next check in.
 
 - [x] Look up the due date on Blackboard and add it to the Overview
-- [ ] Teammates choose the Teammate 1 or Teammate 2 role below (swap pages if you like), agree on tasks between yourselves, then tell Ryan so he can fill in the Owner column of the Task List
+- [ ] Teammates choose the Ben or Abou role below (swap pages if you like), agree on tasks between yourselves, then tell Ryan so he can fill in the Owner column of the Task List
 - [ ] Ryan invites both teammates to the GitHub repo
 - [ ] Pick a group chat and two check-in times a week
 - [x] Put a deadline on each of the four phases, counting back from the due date
@@ -30,7 +30,7 @@ Before anyone starts building, each of us should know our pages, our first task,
 
 ## Who does what
 
-In plain terms: Ryan makes the app save and load data; Teammate 1 makes the existing pages look like the prototype; Teammate 2 builds the pages that don't exist yet. Testing, rehearsing and presenting are shared.
+In plain terms: Ryan makes the app save and load data; Ben makes the existing pages look like the prototype; Abou builds the pages that don't exist yet. Testing, rehearsing and presenting are shared.
 
 ### Ryan: the backend
 
@@ -46,7 +46,7 @@ In plain terms: Ryan makes the app save and load data; Teammate 1 makes the exis
 
 **Done when:** every route in the API contract works with real data.
 
-### Teammate 1: the pages a signed-in host already has
+### Ben: the pages a signed-in host already has
 
 **What it is:** Sign in, Create account, Reset password, Dashboard and Appointments. Most of these already work in Step 13; the job is making them match the prototype.
 
@@ -54,7 +54,7 @@ In plain terms: Ryan makes the app save and load data; Teammate 1 makes the exis
 
 1. Install Node.js, clone the repo, run it, and create an account.
 2. Open the prototype and the running app side by side and list every difference.
-3. Split `dashboard.html` into the four page files (task L1) and push it early, since Teammate 2 needs two of them.
+3. Split `dashboard.html` into the four page files (task L1) and push it early, since Abou needs two of them.
 
 **After that:** the shared look (`style.css`, the sidebar), the Reset password page, the Dashboard greeting and cards, the Appointments rows and form, and the slides.
 
@@ -62,14 +62,14 @@ In plain terms: Ryan makes the app save and load data; Teammate 1 makes the exis
 
 **Needs from Ryan:** nothing new; these pages use routes that already work.
 
-### Teammate 2: the new pages and the booking page
+### Abou: the new pages and the booking page
 
 **What it is:** Availability (weekly hours), Settings (profile), and the public page guests use to book. These are mostly new.
 
 **This week:**
 
 1. Install Node.js, clone the repo, run it, and create an account.
-2. Once Teammate 1 has split the pages, build the Availability layout (7 days, checkboxes, start and end times) using the example data in the API contract.
+2. Once Ben has split the pages, build the Availability layout (7 days, checkboxes, start and end times) using the example data in the API contract.
 3. Build the Settings form layout the same way.
 
 **After that:** connect both pages to Ryan's routes, rebuild `booking.html` to match the prototype, and write the README.
@@ -132,8 +132,8 @@ Ryan owns the backend. The two teammates split the frontend, README and presenta
 | Person | Owns |
 | --- | --- |
 | Ryan | Server, database, every API route, the shared app.js, booking rules, test account, deploy (optional). See the Backend checklist below. |
-| Teammate 1 | Picks from the task list. Suggested: index.html, register.html, reset.html, dashboard.html, appointments.html, slides. |
-| Teammate 2 | Picks from the task list. Suggested: availability.html, settings.html, booking.html, README. |
+| Ben | Picks from the task list. Suggested: index.html, register.html, reset.html, dashboard.html, appointments.html, slides. |
+| Abou | Picks from the task list. Suggested: availability.html, settings.html, booking.html, README. |
 | Everyone | Setup, testing the demo flow, rehearsing, presenting. |
 
 ## Phases
