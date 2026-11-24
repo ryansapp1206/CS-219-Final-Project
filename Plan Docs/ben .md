@@ -18,14 +18,14 @@ Everything you need is written into each step, so you shouldn't have to hunt thr
 
 - Your pages are `index.html`, `register.html`, `reset.html`, `dashboard.html` and `appointments.html`, with their `.js` files, plus `style.css`.
 - On the four signed-in pages, every request to the server goes through `apiRequest()` from `app.js`. Ryan writes `app.js`; don't edit it, or `server.js` or `database.js`. The sign-in pages keep their own `fetch` calls, as in Step 13.
-- Tell Teammate 2 before you change `style.css` or the sidebar, since their pages use them too.
+- Tell Abou before you change `style.css` or the sidebar, since their pages use them too.
 - Stuck or blocked? Tell Ryan.
 
 **Where to look:** the look comes from the [Figma prototype](https://violet-surly-41566398.figma.site/). How the teacher built something is in the [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo, in the step named on each task.
 
 ## Setup: by Wednesday, November 25
 
-- [ ] Agree with Teammate 2 that you're Ben, and tell Ryan.
+- [ ] Agree with Abou that you're Ben, and tell Ryan.
 - [ ] Install Node.js 20.6 or newer from nodejs.org (the LTS version). Check it with `node -v` in a terminal.
 - [ ] Accept Ryan's GitHub invite and clone the repo.
 - [ ] Once Ryan has pushed the server, save the `.env` file he sends you in the same folder as `server.js`. Never commit it.
@@ -34,13 +34,13 @@ Everything you need is written into each step, so you shouldn't have to hunt thr
 
 ## Build: by Wednesday, December 2
 
-Do these in order. The first one unblocks Teammate 2, so do it as soon as setup works.
+Do these in order. The first one unblocks Abou, so do it as soon as setup works.
 
 ### Shared pieces first
 
 - [ ] L1: Split `dashboard.html` into one file per page
 
-    Make `dashboard.html`, `appointments.html`, `availability.html` and `settings.html`, each with the same sidebar, plus an empty `reset.html`. Each of the four signed-in pages loads `app.js` before its own script. Push it the same day, because Teammate 2 builds in two of these files. Snippet: Step 5 is the one-file version you're splitting.
+    Make `dashboard.html`, `appointments.html`, `availability.html` and `settings.html`, each with the same sidebar, plus an empty `reset.html`. Each of the four signed-in pages loads `app.js` before its own script. Push it the same day, because Abou builds in two of these files. Snippet: Step 5 is the one-file version you're splitting.
 
 - [ ] L3: Make `style.css` match the prototype
 
@@ -133,7 +133,7 @@ Do these in order. The first one unblocks Teammate 2, so do it as soon as setup 
 
 ## Wrap up: by Tuesday, December 8
 
-You own the presentation; Teammate 2 owns the README.
+You own the presentation; Abou owns the README.
 
 - [ ] P1: Slides
 
