@@ -1,4 +1,4 @@
-# Teammate 2 Checklist: New Pages and Booking
+# Abou Checklist: New Pages and Booking
 
 Updated November 23, 2026
 
@@ -20,14 +20,14 @@ Everything you need is written into each step, so you shouldn't have to hunt thr
 - On Availability and Settings, every request to the server goes through `apiRequest()` from `app.js`. Ryan writes `app.js`; don't edit it, or `server.js` or `database.js`.
 - The booking page is public (guests aren't signed in), so it doesn't load `app.js` and keeps its own `fetch` calls, as in Step 13.
 - Show what the server sends back. Working out which times are free, or blocking double bookings, is the server's job, not your page's.
-- `style.css` and the sidebar belong to Teammate 1. Ask them before changing either.
+- `style.css` and the sidebar belong to Ben. Ask them before changing either.
 - Stuck or blocked? Tell Ryan.
 
 **Where to look:** the look comes from the [Figma prototype](https://violet-surly-41566398.figma.site/). How the teacher built something is in the [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo, in the step named on each task.
 
 ## Setup: by Wednesday, November 25
 
-- [ ] Agree with Teammate 1 that you're Teammate 2, and tell Ryan.
+- [ ] Agree with Ben that you're Abou, and tell Ryan.
 - [ ] Install Node.js 20.6 or newer from nodejs.org (the LTS version). Check it with `node -v` in a terminal.
 - [ ] Accept Ryan's GitHub invite and clone the repo.
 - [ ] Once Ryan has pushed the server, save the `.env` file he sends you in the same folder as `server.js`. Never commit it.
@@ -54,7 +54,7 @@ The server sends, and expects back, all 7 days in this shape:
 
 - [ ] V1: Weekly hours layout
 
-    A "Weekly hours" card with 7 rows, Monday to Sunday: a checkbox, the day name, a start time, "to", and an end time. An unchecked day shows "Unavailable" instead of times. A "Save availability" button at the bottom. Waits on Teammate 1's L1, which creates the file.
+    A "Weekly hours" card with 7 rows, Monday to Sunday: a checkbox, the day name, a start time, "to", and an end time. An unchecked day shows "Unavailable" instead of times. A "Save availability" button at the bottom. Waits on Ben's L1, which creates the file.
 
 - [ ] V4: Check the times
 
@@ -151,7 +151,7 @@ This builds on Step 13's `booking.html` and `booking.js`. For a picked date, the
 
 ## Wrap up: by Tuesday, December 8
 
-You own the README; Teammate 1 owns the presentation. The README needs exactly these 7 items. R1, R3 and R7 can be written any time.
+You own the README; Ben owns the presentation. The README needs exactly these 7 items. R1, R3 and R7 can be written any time.
 
 - [ ] R1: Title, our three names, and 2–3 sentences on what the app does
 - [ ] R2: A screenshot of every required screen, saved in a folder in the repo
@@ -170,7 +170,7 @@ You own the README; Teammate 1 owns the presentation. The README needs exactly t
 - [ ] R6: The test account email and password the instructor signs in with (get it from Ryan)
 - [ ] R7: Every outside resource we used, with links
 
-    The teacher's snippets repo, docs pages, tutorials, AI tools. Ask Ryan and Teammate 1 for theirs.
+    The teacher's snippets repo, docs pages, tutorials, AI tools. Ask Ryan and Ben for theirs.
 
 - [ ] Q2: Fresh-clone test
 
