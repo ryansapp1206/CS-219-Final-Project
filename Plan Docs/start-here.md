@@ -4,28 +4,28 @@ Updated November 25, 2026
 
 You don't need to read every plan doc. Follow these steps in order; each one tells you exactly which part to open, and anything not listed here is Ryan's.
 
-## Step 1, as soon as Ryan sends the `.env`: get the app running
+## Step 1: get the app running (Ryan sent the `.env` on November 25)
 
-The goal is to sign in to the app on your own laptop. You don't need to understand the server to do this. Until the `.env` arrives, start on the "no `.env` needed" tasks at the top of your checklist.
+The goal is to sign in to the app on your own laptop. You don't need to understand the server to do this. The "start now" tasks at the top of your checklist don't need it, so you can do those first.
 
 1. `git pull` so you have the server code.
 2. Save the `.env` file from Ryan in the same folder as `server.js`. It isn't in the repo, so pulling doesn't give it to you. Never commit this file. Finder and File Explorer hide files starting with a dot; VS Code shows it.
 3. In that folder, run `npm install`, then `npm start`.
-4. Open http://localhost:3000 and create an account.
+4. Open http://localhost:3000 and create an account with your name in it (`ben-test@example.com`, `abou-test@example.com`); we all share one database.
 
 If any of this fails, tell Ryan. Setup problems are his to fix, not yours.
 
 ## Step 2: follow your checklist
 
-Your whole job is one checklist, in order, with every detail written in: the [Ben Checklist](ben.md) or the [Abou Checklist](abou.md). Tick each box as you finish. Here's what each one covers:
+Your whole job is one checklist, in order, with every detail written in: the [Ben Checklist](ben.md) or the [Abou Checklist](abou.md). Each checklist starts with a table of what already exists in Step 13, so you don't rebuild anything, and every task ends with **Done when**: when that's true, tick the box. Here's what each one covers:
 
 | | Ben | Abou |
 | --- | --- | --- |
-| Your sections | Shared files; index.html, register.html, reset.html; dashboard.html; appointments.html; Presentation and demo | availability.html; settings.html; booking.html; README |
-| Start now (no `.env` needed) | A3 (reset page), A1, A2, L3 (`style.css`) | V1 (`availability.html`), T1 (`settings.html`), README R1, R3, R7 |
-| Friday, after Ryan's `app.js` | L1 (split `dashboard.html`), L4 (sidebar) | Load `app.js` in your pages, V4, B1, B2 |
+| Your screens | Sign in, Create account, Reset password, Dashboard, Appointments; `style.css` and the sidebar; slides | Availability, Settings, the public booking page; README |
+| Start now (no `.env` needed) | A3 (reset page), A1 ("Forgot password?" link), L3 (`style.css`) | V1 (`availability.html`), T1 (`settings.html`), README R1, R3, R7 |
+| Friday, after Ryan's `app.js` | L1 (split `dashboard.html` into Dashboard and Appointments, and make the sidebar links work in all four pages), L4 (sidebar look) | V5 (load `app.js` in your two pages), V4, B2 |
 
-Neither of you waits on the other: Abou creates the Availability and Settings pages as new files, and Ben splits `dashboard.html` on Friday. Each checklist has a day for every task. If you swap tasks, tell Ryan so he can update the Owner column of the [Task List](task-list.md).
+Neither of you waits on the other: Abou creates the Availability and Settings pages as new files, and Ben splits `dashboard.html` on Friday. The one shared edit: on Friday Ben changes the sidebar block (`<aside>`) in Abou's two files too, so Abou pulls before working that day and leaves the `<aside>` to Ben. Each checklist has a day for every task. If you swap tasks, tell Ryan so he can update the Owner column of the [Task List](task-list.md).
 
 ## Step 3, while you build: where to look
 

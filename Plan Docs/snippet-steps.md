@@ -48,7 +48,7 @@ The full code for every step is in the teacher's [SimpleSchedule-Snippets](https
 - `novalidate` on the form turns off the browser's own pop-ups, so the JavaScript shows its messages instead.
 - On submit, the script stops the page reloading, reads and trims the values, checks each rule, and shows the first error.
 
-**In our plan:** A4.
+**In our plan:** A4, already done in Step 13; the reset page's email check (A3) uses the same pattern.
 
 ## Step 4: Sidebar layout
 
@@ -147,6 +147,6 @@ The full code for every step is in the teacher's [SimpleSchedule-Snippets](https
 - Two public routes, no sign-in needed: one returns the host's name and the times already taken on a date; the other books a time and refuses double bookings.
 - The booking link is `booking.html?host=` followed by your email, shown on the Dashboard.
 - Picking a day asks the server which times are taken and shows only the free ones; confirming shows "You're booked".
-- Its "Ideas to finish the project" are our remaining work: Availability, Settings and Forgot password.
+- Its "Ideas to finish the project" are Availability, Settings, Forgot password, a Past tab on Appointments, and deploying. We do all of them except the Past tab, which the requirements don't ask for (they list Upcoming, All and Cancelled).
 
-**In our plan:** Ryan's booking items and tasks B1–B9. We change `booking-info` to return free times from saved hours (see the API contract in the [Team Plan](team-plan.md)).
+**In our plan:** Ryan's booking items and tasks B2–B9 (B1, the layout, is already done in Step 13). We change `booking-info` to return free times from saved hours (see the API contract in the [Team Plan](team-plan.md)).
