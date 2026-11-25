@@ -1,6 +1,6 @@
 # Snippet steps
 
-The teacher's snippets build SimpleSchedule in 13 steps, one folder each, and every step adds one thing to the step before. Steps 1–7 run in the browser alone, Steps 8–13 need Node.js, and Steps 9–13 also need MongoDB. Step 13 is our starting point.
+The teacher's snippets build SimpleSchedule in 13 steps, one folder each, and every step adds one thing to the step before. Steps 1–7 run in the browser alone, Steps 8–13 need Node.js, and Steps 9–13 also need MongoDB. Step 13 is our starting point: Ryan committed its complete code to our repo on November 25, with the teacher's permission to use all of it. Credit the snippets repo in the README (item 7).
 
 The full code for every step is in the teacher's [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo on GitHub. Our plan is in the [Team Plan](team-plan.md); task numbers below refer to the [Task List](task-list.md).
 
