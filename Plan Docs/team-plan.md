@@ -191,7 +191,7 @@ Every route sends and returns JSON. "Sign-in" means the request carries `Authori
 
 1. On the four signed-in pages, every request goes through `apiRequest()` in `app.js`. No `fetch` calls of your own there. The sign-in pages and the public booking page keep their own fetch calls, as in Step 13, because nobody is signed in on them.
 2. Use the field names in this section exactly.
-3. Don't edit `server.js`, `database.js` or `app.js`. Ask Ryan instead.
+3. Don't edit `server.js`, `database.js` or `app.js`.
 4. Show what the server returns. Deciding which times are free, or blocking double bookings, is the server's job.
 
 **Example responses**

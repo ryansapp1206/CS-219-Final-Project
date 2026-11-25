@@ -28,10 +28,9 @@ Task numbers (like V1) match the [Task List](task-list.md).
 **Ground rules:**
 
 - Your files: `public/availability.html`, `public/settings.html`, `public/booking.html`, `public/js/availability.js`, `public/js/settings.js`, `public/js/booking.js`, and `README.md`.
-- Don't edit `server.js`, `database.js` or `public/js/app.js` (Ryan's), or `dashboard.html`, `style.css` and the sidebar (Ben's). Ask the owner instead. The one exception is on Friday: Ben edits the sidebar block (`<aside>`) inside your two files, so pull before you work that day and leave the `<aside>` block to him.
+- Don't edit `server.js`, `database.js` or `public/js/app.js` (Ryan's), or `dashboard.html`, `style.css` and the sidebar (Ben's). The one exception is on Friday: Ben edits the sidebar block (`<aside>`) inside your two files, so pull before you work that day and leave the `<aside>` block to him.
 - On Availability and Settings, every request to the server goes through `apiRequest()` from `app.js`. The booking page is public (guests aren't signed in), so it doesn't load `app.js` and keeps its own `fetch` calls, as in Step 13.
 - Show what the server sends back. Working out which times are free, or blocking double bookings, is the server's job, not your page's.
-- Stuck or blocked? Tell Ryan.
 
 **Where to look:** the look comes from the [Figma prototype](https://violet-surly-41566398.figma.site/). How the teacher built something is in the [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo, in the step named on each task.
 
@@ -84,7 +83,7 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 ## As soon as Ryan sends the `.env`: run the app
 
 - [ ] `git pull`, then save the `.env` file in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
-- [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`abou-test@example.com`). If anything fails, tell Ryan.
+- [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`abou-test@example.com`).
 
     **Done when:** you can sign in and see the Dashboard.
 

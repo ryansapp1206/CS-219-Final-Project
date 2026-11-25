@@ -36,7 +36,6 @@ Task numbers (like L1) match the [Task List](task-list.md).
 - Don't edit `dashboard.js` or `appointments.js` until Ryan says `app.js` is pushed (Friday). He's moving code out of `dashboard.js`.
 - On the four signed-in pages, every request to the server goes through `apiRequest()` from `app.js`. The sign-in pages keep their own `fetch` calls, as in Step 13.
 - Tell Abou before you change `style.css` or the sidebar, since his pages use them too.
-- Stuck or blocked? Tell Ryan.
 
 **Where to look:** the look comes from the [Figma prototype](https://violet-surly-41566398.figma.site/). How the teacher built something is in the [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo, in the step named on each task.
 
@@ -69,8 +68,8 @@ These pages work without the server: open `public/index.html`, `public/register.
 ## As soon as Ryan sends the `.env`: run the app
 
 - [ ] `git pull`, then save the `.env` file in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
-- [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`ben-test@example.com`). If anything fails, tell Ryan.
-- [ ] Put the prototype and the running app side by side and write down every difference on Dashboard and Appointments. Check it against the D and E tasks below; tell Ryan about anything they miss.
+- [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`ben-test@example.com`).
+- [ ] Put the prototype and the running app side by side and write down every difference on Dashboard and Appointments. Check it against the D and E tasks below.
 
     **Done when:** you can sign in and see the Dashboard.
 

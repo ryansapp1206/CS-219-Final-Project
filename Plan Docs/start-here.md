@@ -13,8 +13,6 @@ The goal is to sign in to the app on your own laptop. You don't need to understa
 3. In that folder, run `npm install`, then `npm start`.
 4. Open http://localhost:3000 and create an account with your name in it (`ben-test@example.com`, `abou-test@example.com`); we all share one database.
 
-If any of this fails, tell Ryan. Setup problems are his to fix, not yours.
-
 ## Step 2: follow your checklist
 
 Your whole job is one checklist, in order, with every detail written in: the [Ben Checklist](ben.md) or the [Abou Checklist](abou.md). Each checklist starts with a table of what already exists in Step 13, so you don't rebuild anything, and every task ends with **Done when**: when that's true, tick the box. Here's what each one covers:
@@ -38,7 +36,7 @@ Open these only when the question comes up.
 | What data will my page get from the server? | [Team Plan](team-plan.md), **API contract**, "Example responses". Build with that sample data until Ryan's route is ready |
 | What am I allowed to touch? | [Team Plan](team-plan.md), **Rules for the frontend** (four rules, just under the API table) |
 
-The frontend rules in short: on the signed-in pages every request goes through `apiRequest()`, field names match the contract exactly, and you never edit `server.js`, `database.js` or `app.js`; ask Ryan instead.
+The frontend rules in short: on the signed-in pages every request goes through `apiRequest()`, field names match the contract exactly, and you never edit `server.js`, `database.js` or `app.js`.
 
 ## Step 4, every few days: habits and deadlines
 
