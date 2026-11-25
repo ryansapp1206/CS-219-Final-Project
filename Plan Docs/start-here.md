@@ -1,42 +1,33 @@
 # Start Here: SimpleSchedule for Teammates
 
-Updated November 23, 2026
+Updated November 25, 2026
 
-You don't need to read all three plan docs. Follow these steps in order; each one tells you exactly which part to open, and anything not listed here is Ryan's.
+You don't need to read every plan doc. Follow these steps in order; each one tells you exactly which part to open, and anything not listed here is Ryan's.
 
-## Step 1, first: pick your role and tasks
+## Step 1, as soon as Ryan sends the `.env`: get the app running
 
-There are two frontend roles, and you each take one.
+The goal is to sign in to the app on your own laptop. You don't need to understand the server to do this. Until the `.env` arrives, start on the "no `.env` needed" tasks at the top of your checklist.
 
-1. In the [Team Plan](team-plan.md), read only **Who does what**, and only the Ben and Abou parts.
-2. Decide between you who is Ben (the existing pages) and who is Abou (the new pages and the booking page).
-3. Skim your checklist (Step 3 below), agree with each other on who takes what, then tell Ryan so he can record it.
-
-## Step 2, by Wednesday, November 25: get the app running
-
-The goal is to sign in to the app on your own laptop. You don't need to understand the server to do this.
-
-1. Install Node.js 20.6 or newer from nodejs.org (the LTS version). Check it worked by typing `node -v` in a terminal.
-2. Accept Ryan's GitHub invite and clone the repo.
-3. Once Ryan has pushed the server code, get the `.env` file from him and save it in the same folder as `server.js`. Never commit this file.
-4. In that folder, run `npm install`, then `npm start`.
-5. Open http://localhost:3000 and create an account.
+1. `git pull` so you have the server code.
+2. Save the `.env` file from Ryan in the same folder as `server.js`. It isn't in the repo, so pulling doesn't give it to you. Never commit this file. Finder and File Explorer hide files starting with a dot; VS Code shows it.
+3. In that folder, run `npm install`, then `npm start`.
+4. Open http://localhost:3000 and create an account.
 
 If any of this fails, tell Ryan. Setup problems are his to fix, not yours.
 
-## Step 3: follow your checklist
+## Step 2: follow your checklist
 
-Once you've picked, your whole job is one checklist, in order, with every detail written in: the [Ben Checklist](teammate-1.md) or the [Abou Checklist](teammate-2.md). Tick each box as you finish. Here's what each one covers:
+Your whole job is one checklist, in order, with every detail written in: the [Ben Checklist](ben.md) or the [Abou Checklist](abou.md). Tick each box as you finish. Here's what each one covers:
 
 | | Ben | Abou |
 | --- | --- | --- |
 | Your sections | Shared files; index.html, register.html, reset.html; dashboard.html; appointments.html; Presentation and demo | availability.html; settings.html; booking.html; README |
-| Start with | L1: split `dashboard.html` into one file per page, and push it the same day | V1: the Availability layout, once L1 is pushed |
-| Then | L3 (`style.css`), L4 (sidebar), then A1–A4 | T1 (Settings layout), then B1 (booking page layout) |
+| Start now (no `.env` needed) | A3 (reset page), A1, A2, L3 (`style.css`) | V1 (`availability.html`), T1 (`settings.html`), README R1, R3, R7 |
+| Friday, after Ryan's `app.js` | L1 (split `dashboard.html`), L4 (sidebar) | Load `app.js` in your pages, V4, B1, B2 |
 
-Abou waits on L1 only briefly, so Ben should do it first. If you swap pages, swap the rows too.
+Neither of you waits on the other: Abou creates the Availability and Settings pages as new files, and Ben splits `dashboard.html` on Friday. Each checklist has a day for every task. If you swap tasks, tell Ryan so he can update the Owner column of the [Task List](task-list.md).
 
-## Step 4, while you build: where to look
+## Step 3, while you build: where to look
 
 Open these only when the question comes up.
 
@@ -49,11 +40,11 @@ Open these only when the question comes up.
 
 The frontend rules in short: on the signed-in pages every request goes through `apiRequest()`, field names match the contract exactly, and you never edit `server.js`, `database.js` or `app.js`; ask Ryan instead.
 
-## Step 5, every few days: habits and deadlines
+## Step 4, every few days: habits and deadlines
 
 - Pull before you start, commit small pieces with clear messages, and push the same day. Your commits are graded.
 - At each check-in, say what's done and what's blocked.
-- Your pages should work with real data by **Wednesday, December 2**. The whole demo should run by **Saturday, December 5**. Everything is due **Tuesday, December 8, 11:59 PM**.
+- Everything is due **Wednesday, December 2**. Your pages should work with real data by **Sunday, November 29**, the whole demo should run on the live URL by **Monday, November 30**, and **Tuesday, December 1** is for fixing bugs, screenshots and the first rehearsal.
 
 ## What you can skip
 
