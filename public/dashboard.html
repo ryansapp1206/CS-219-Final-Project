@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | SimpleSchedule</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">S</span>
+      <span>SimpleSchedule</span>
+    </div>
+
+    <!-- NEW in Step 5: the menu items are now <button>s.
+         data-page tells our JavaScript which page to show. -->
+    <nav>
+      <button class="nav-link" data-page="dashboard">🏠 Dashboard</button>
+      <button class="nav-link" data-page="appointments">📅 Appointments</button>
+      <button class="nav-link" data-page="availability">🕒 Availability</button>
+      <button class="nav-link" data-page="settings">⚙️ Settings</button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="avatar" id="user-avatar">AS</div>
+      <div>
+        <p class="account-name" id="user-name">Alex Smith</p>
+        <p class="account-email" id="user-email">alex@example.com</p>
+      </div>
+      <button class="signout-button">Sign out</button>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main">
+
+    <!-- NEW in Step 5: on phones the sidebar is hidden, so we show this bar instead -->
+    <div class="mobile-bar">
+      <div class="brand">
+        <span class="logo">S</span>
+        <span>SimpleSchedule</span>
+      </div>
+      <button class="signout-button">Sign out</button>
+      <select id="mobile-menu" aria-label="Current page">
+        <option value="dashboard">Dashboard</option>
+        <option value="appointments">Appointments</option>
+        <option value="availability">Availability</option>
+        <option value="settings">Settings</option>
+      </select>
+    </div>
+
+    <!-- The title changes when you click a menu item -->
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">Dashboard</h1>
+        <p id="page-subtitle">Here is your schedule for today.</p>
+      </div>
+      <button class="primary-btn" id="topbar-new-button">+ New appointment</button>
+    </header>
+
+    <!-- ========== PAGE 1: Dashboard ========== -->
+    <section class="page" id="dashboard-page">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-label">Today</p>
+          <p class="stat-number" id="stat-today">3</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">This week</p>
+          <p class="stat-number" id="stat-week">8</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Hours booked this week</p>
+          <p class="stat-number" id="stat-hours">4</p>
+        </div>
+      </div>
+
+      <!-- NEW in Step 13: the public link guests use to book with you -->
+      <div class="panel">
+        <h2>Your booking page</h2>
+        <p class="muted">Share this link so people can book a meeting with you.</p>
+        <p><a id="share-link" href="#" target="_blank">Loading...</a></p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Today's appointments</h2>
+        </div>
+        <div id="today-list">
+        <div class="appointment-row">
+          <div class="avatar">JM</div>
+          <div class="appointment-info">
+            <p class="appointment-name">Jordan Miller</p>
+            <p class="appointment-meta">Project discussion · 30 min</p>
+          </div>
+          <span class="time-tag">10:00 AM</span>
+        </div>
+        <div class="appointment-row">
+          <div class="avatar">AK</div>
+          <div class="appointment-info">
+            <p class="appointment-name">Avery Kim</p>
+            <p class="appointment-meta">Quick meeting · 30 min</p>
+          </div>
+          <span class="time-tag">11:30 AM</span>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAGE 2: Appointments ========== -->
+    <!-- NEW in Step 7: filter buttons, a form, and an EMPTY list that JavaScript fills -->
+    <section class="page" id="appointments-page">
+
+      <div class="page-actions">
+        <div class="filter-tabs">
+          <button class="filter-button active" data-filter="upcoming">Upcoming</button>
+          <button class="filter-button" data-filter="cancelled">Cancelled</button>
+          <button class="filter-button" data-filter="all">All</button>
+        </div>
+        <button class="primary-btn" id="toggle-form-button">+ New appointment</button>
+      </div>
+
+      <p class="success-message hidden" id="appointment-notice"></p>
+
+      <!-- The form starts hidden. The button above shows/hides it. -->
+      <form class="panel simple-form hidden" id="appointment-form" novalidate>
+        <h2>Add an appointment</h2>
+        <p class="muted">Enter only the basic information needed for a meeting.</p>
+
+        <div class="form-grid">
+          <div>
+            <label for="guest-name">Guest name</label>
+            <input type="text" id="guest-name" placeholder="Jordan Miller">
+          </div>
+          <div>
+            <label for="guest-email">Guest email</label>
+            <input type="email" id="guest-email" placeholder="guest@example.com">
+          </div>
+          <div>
+            <label for="appointment-date">Date</label>
+            <input type="date" id="appointment-date">
+          </div>
+          <div>
+            <label for="appointment-time">Time</label>
+            <input type="time" id="appointment-time">
+          </div>
+        </div>
+
+        <label for="meeting-type">Meeting type</label>
+        <select id="meeting-type">
+          <option>Project discussion</option>
+          <option>Quick meeting</option>
+          <option>Check-in</option>
+        </select>
+
+        <p class="error-message hidden" id="appointment-error"></p>
+        <button type="submit" class="primary-btn">Add appointment</button>
+      </form>
+
+      <div class="panel">
+        <h2 id="records-heading">Appointments</h2>
+        <div id="appointment-list"></div>
+      </div>
+    </section>
+
+    <!-- ========== PAGE 3: Availability ========== -->
+    <section class="page" id="availability-page">
+      <div class="panel">
+        <h2>Weekly hours</h2>
+        <p class="muted">Choose the times when people can book an appointment.</p>
+
+        <div class="day-row">
+          <label><input type="checkbox" checked> Monday</label>
+          <input type="time" value="09:00"> to <input type="time" value="17:00">
+        </div>
+        <div class="day-row">
+          <label><input type="checkbox" checked> Tuesday</label>
+          <input type="time" value="09:00"> to <input type="time" value="17:00">
+        </div>
+        <div class="day-row">
+          <label><input type="checkbox" checked> Wednesday</label>
+          <input type="time" value="09:00"> to <input type="time" value="17:00">
+        </div>
+        <div class="day-row">
+          <label><input type="checkbox" checked> Thursday</label>
+          <input type="time" value="09:00"> to <input type="time" value="17:00">
+        </div>
+        <div class="day-row">
+          <label><input type="checkbox" checked> Friday</label>
+          <input type="time" value="09:00"> to <input type="time" value="17:00">
+        </div>
+
+        <div class="info-box">
+          <strong>Keep it simple.</strong> For this project, each day needs only one available time range.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAGE 4: Settings ========== -->
+    <section class="page" id="settings-page">
+      <form class="panel simple-form">
+        <h2>Profile</h2>
+        <p class="muted">This information appears on your public booking page.</p>
+
+        <label for="settings-name">Full name</label>
+        <input type="text" id="settings-name" value="Alex Smith">
+
+        <label for="settings-email">Email address</label>
+        <input type="email" id="settings-email" value="alex@example.com">
+
+        <label for="settings-timezone">Time zone</label>
+        <select id="settings-timezone">
+          <option>Eastern Time (ET)</option>
+          <option>Central Time (CT)</option>
+          <option>Mountain Time (MT)</option>
+          <option>Pacific Time (PT)</option>
+        </select>
+
+        <label for="settings-link">Meeting link</label>
+        <input type="url" id="settings-link" value="https://meet.example.com/alex">
+
+        <button type="button" class="primary-btn">Save settings</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- dashboard.js must load FIRST because appointments.js uses its showPage() function -->
+  <script src="js/dashboard.js"></script>
+  <script src="js/appointments.js"></script>
+</body>
+</html>
