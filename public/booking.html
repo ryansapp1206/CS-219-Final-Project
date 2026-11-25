@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a meeting | SimpleSchedule</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="booking-page">
+
+    <div class="brand">
+      <span class="logo">S</span>
+      <span>SimpleSchedule</span>
+    </div>
+
+    <!-- Shown if the link has a wrong or missing ?host=... -->
+    <p class="error-message hidden" id="page-error"></p>
+
+    <!-- ===== Part 1: pick a date and time (same layout as Step 6) ===== -->
+    <section class="booking-card" id="booking-card">
+      <div class="host-panel">
+        <div class="avatar" id="host-avatar">?</div>
+        <p class="muted" id="host-name">Loading...</p>
+        <h2>30 Minute Meeting</h2>
+        <p class="muted">A short meeting to discuss your project, questions, and next steps.</p>
+        <ul class="meeting-facts">
+          <li>🕒 30 minutes</li>
+          <li>🎥 Online meeting</li>
+        </ul>
+      </div>
+
+      <div class="calendar-panel">
+        <h2>Select a date</h2>
+        <div class="month-row">
+          <button id="prev-month" aria-label="Previous month">‹</button>
+          <strong id="month-label">Month Year</strong>
+          <button id="next-month" aria-label="Next month">›</button>
+        </div>
+        <div class="weekday-row">
+          <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span>
+          <span>THU</span><span>FRI</span><span>SAT</span>
+        </div>
+        <div class="days-grid" id="days-grid"></div>
+      </div>
+
+      <div class="times-panel">
+        <h2>Available times</h2>
+        <p class="chosen-date" id="chosen-date">Pick a date to see available times.</p>
+        <div class="time-list" id="time-list"></div>
+      </div>
+    </section>
+
+    <!-- ===== Part 2: guest details (hidden until a time is picked) ===== -->
+    <form class="panel simple-form hidden" id="details-form" novalidate>
+      <h2>Enter your details</h2>
+      <p class="selected-summary" id="selected-summary"></p>
+
+      <label for="guest-name">Name</label>
+      <input type="text" id="guest-name" placeholder="Your full name">
+
+      <label for="guest-email">Email</label>
+      <input type="email" id="guest-email" placeholder="you@example.com">
+
+      <label for="guest-notes">Notes (optional)</label>
+      <input type="text" id="guest-notes" placeholder="What would you like to discuss?">
+
+      <p class="error-message hidden" id="details-error"></p>
+      <button type="submit" class="primary-btn wide">Confirm appointment</button>
+      <p class="demo-note">Your information is only used for this appointment.</p>
+    </form>
+
+    <!-- ===== Part 3: success message (hidden until booked) ===== -->
+    <section class="panel hidden" id="success-panel">
+      <p class="eyebrow">Appointment confirmed</p>
+      <h2 id="success-title">You're booked!</h2>
+      <p class="muted" id="success-details"></p>
+    </section>
+
+  </main>
+
+  <script src="js/booking.js"></script>
+</body>
+</html>
