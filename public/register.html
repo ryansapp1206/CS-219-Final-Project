@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account | SimpleSchedule</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="auth-page">
+
+    <div class="brand">
+      <span class="logo">S</span>
+      <span>SimpleSchedule</span>
+    </div>
+
+    <section class="auth-card">
+      <p class="eyebrow">Create your workspace</p>
+      <h1>Create an account</h1>
+      <p class="subtitle">Start sharing your appointment page in minutes.</p>
+
+      <!-- NEW in Step 3: boxes for messages (hidden until needed) -->
+      <p class="error-message hidden" id="error-message"></p>
+      <p class="success-message hidden" id="success-message"></p>
+
+      <!-- "novalidate" turns off the browser's own pop-ups so OUR JavaScript can check the form -->
+      <form class="auth-form" id="register-form" novalidate>
+        <!-- New field compared to the sign in page -->
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" placeholder="Alex Smith" required>
+
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" minlength="6" required>
+
+        <button type="submit" class="primary-btn wide">Create account</button>
+      </form>
+
+      <!-- Link back to the sign in page (index.html) -->
+      <p class="switch-text">Already have an account? <a href="index.html">Sign in</a></p>
+    </section>
+
+    <p class="demo-note">CS 219 student project demo</p>
+  </main>
+
+  <!-- NEW in Step 3: load our JavaScript at the end of the page -->
+  <script src="js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | SimpleSchedule</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="auth-page">
+
+    <!-- 1. Logo -->
+    <div class="brand">
+      <span class="logo">S</span>
+      <span>SimpleSchedule</span>
+    </div>
+
+    <!-- 2. The white card -->
+    <section class="auth-card">
+      <p class="eyebrow">Welcome back</p>
+      <h1>Sign in to your account</h1>
+      <p class="subtitle">Manage your appointments and availability.</p>
+
+      <!-- 3. The form -->
+      <!-- NEW in Step 3: a box for error messages (hidden until needed) -->
+      <p class="error-message hidden" id="error-message"></p>
+
+      <!-- "novalidate" turns off the browser's own pop-ups so OUR JavaScript can check the form -->
+      <form class="auth-form" id="login-form" novalidate>
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+
+        <div class="label-row">
+          <label for="password">Password</label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" required>
+
+        <button type="submit" class="primary-btn wide">Sign in</button>
+      </form>
+
+      <!-- 4. Link to the Create account page (we build it in Step 2) -->
+      <p class="switch-text">Don't have an account? <a href="register.html">Create one</a></p>
+    </section>
+
+    <p class="demo-note">CS 219 student project demo</p>
+  </main>
+
+  <!-- NEW in Step 3: load our JavaScript at the end of the page -->
+  <script src="js/login.js"></script>
+</body>
+</html>
