@@ -338,6 +338,42 @@ async function handleBook(req, res) {
   sendJson(res, 201, { message: "Appointment confirmed." });
 }
 
+const DEFAULT_AVAILABILITY = [
+  { day: "monday", enabled: true, start: "09:00", end: "17:00" },
+  { day: "tuesday", enabled: true, start: "09:00", end: "17:00" },
+  { day: "wednesday", enabled: true, start: "09:00", end: "17:00" },
+  { day: "thursday", enabled: true, start: "09:00", end: "17:00" },
+  { day: "friday", enabled: true, start: "09:00", end: "15:00" },
+  { day: "saturday", enabled: false, start: "09:00", end: "17:00" },
+  { day: "sunday", enabled: false, start: "09:00", end: "17:00" }
+];
+
+async function handleGetAvailability(req, res, user) {
+  sendJson(res, 200, DEFAULT_AVAILABILITY);
+}
+
+async function handleSaveAvailability(req, res, user) {
+  sendJson(res, 200, DEFAULT_AVAILABILITY);
+}
+
+async function handleGetSettings(req, res, user) {
+  sendJson(res, 200, {
+    name: user.name,
+    email: user.email,
+    timezone: "Eastern Time (US & Canada)",
+    meetingLink: "https://meet.example.com/alex"
+  });
+}
+
+async function handleSaveSettings(req, res, user) {
+  sendJson(res, 200, {
+    name: user.name,
+    email: user.email,
+    timezone: "Eastern Time (US & Canada)",
+    meetingLink: "https://meet.example.com/alex"
+  });
+}
+
 // =========================================================
 // ---------- 4. The router: which handler runs for which URL ----------
 // =========================================================
@@ -393,6 +429,31 @@ const server = http.createServer(async function (req, res) {
       const parts = urlPath.split("/");
       if (req.method === "POST" && parts.length === 5 && parts[4] === "cancel") {
         await handleCancelAppointment(req, res, user, parts[3]);
+        return;
+      }
+    }
+
+    if (urlPath === "/api/availability" || urlPath === "/api/settings") {
+      const user = await getLoggedInUser(req);
+      if (!user) {
+        sendJson(res, 401, { error: "Please sign in first." });
+        return;
+      }
+
+      if (req.method === "GET" && urlPath === "/api/availability") {
+        await handleGetAvailability(req, res, user);
+        return;
+      }
+      if (req.method === "PUT" && urlPath === "/api/availability") {
+        await handleSaveAvailability(req, res, user);
+        return;
+      }
+      if (req.method === "GET" && urlPath === "/api/settings") {
+        await handleGetSettings(req, res, user);
+        return;
+      }
+      if (req.method === "PUT" && urlPath === "/api/settings") {
+        await handleSaveSettings(req, res, user);
         return;
       }
     }
