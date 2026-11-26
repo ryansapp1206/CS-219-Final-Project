@@ -4,7 +4,7 @@ Updated November 25, 2026
 
 ## Status, November 25
 
-Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, the start script (Ryan's Backend checklist in the [Team Plan](team-plan.md)), and `app.js` (L2, pushed November 25). A2 and A4 needed no work because Step 13 already matches the prototype there. No other task is started.
+Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, the start script (Ryan's Backend checklist in the [Team Plan](team-plan.md)), `app.js` (L2), and placeholder availability and settings routes, all pushed November 25. A2 and A4 needed no work because Step 13 already matches the prototype there. No other task is started.
 
 The day each task is planned for is in the Schedule in the [Team Plan](team-plan.md) and in each checklist; the checklists ([Ben](ben.md), [Abou](abou.md)) also have step-by-step instructions and a "Done when" for every task. If we fall behind, cut E5, L5, D4, D5 and B9 first. If you swap tasks, tell Ryan so he can update the Owner column. Mark a task done by adding "(done)" after its owner.
 

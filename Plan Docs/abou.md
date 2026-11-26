@@ -89,7 +89,7 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
 ## Friday, November 27: connect your pages to `app.js`, start the booking page
 
-`app.js` is already pushed (November 25), so V5 can start as soon as V1 and T1 are done; `git pull` first. Ryan pushes the placeholder routes by Friday and messages you; they send back exactly the example data in the Saturday section.
+`app.js` is already pushed (November 25), so V5 can start as soon as V1 and T1 are done; `git pull` first. The placeholder availability and settings routes are pushed too (November 25); they send back the example data in the Saturday section, with your real name and email for settings.
 
 - [ ] **V5: Load `app.js` in both pages**
 
@@ -114,7 +114,7 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
 ## Saturday, November 28: load and save Availability and Settings
 
-The routes answer with placeholder data on Friday and save for real once Ryan finishes Saturday. Your code doesn't change when he does.
+The routes already answer with placeholder data (pushed November 25), so you can build these early if you're ahead. They save for real once Ryan finishes Saturday; your code doesn't change when he does.
 
 `GET /api/availability` sends, and `PUT /api/availability` expects, all 7 days, Monday first:
 

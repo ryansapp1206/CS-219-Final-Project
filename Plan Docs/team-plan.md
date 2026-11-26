@@ -26,10 +26,11 @@ The due date moved up to December 2, so the whole plan runs on the day-by-day Sc
 - Step 13's complete code is in the repo.
 - The Atlas database exists (project "CS 219", free Cluster0, `0.0.0.0/0` allowed), `npm start` loads `.env`, the app connects to the `simpleschedule` database, and Ben and Abou have the `.env`.
 - `public/js/app.js` holds the shared signed-in code, and `dashboard.html` loads it (L2, pushed the evening of November 25). Ben's L1 and L4 and Abou's V5 no longer wait on anything from Ryan.
+- Placeholder `GET`/`PUT /api/availability` and `GET`/`PUT /api/settings` are in `server.js` (pushed the evening of November 25). They're signed-in only and send the example data from the API contract; settings uses the account's real name and email. Abou can build V2, V3, T2 and T3 against them now.
 
 **Still open:**
 
-- No `/api/availability` or `/api/settings` routes, not even placeholders. `booking-info` still returns `takenTimes`, not `freeTimes`, `openDays`, `timezone` and `meetingLink`.
+- Availability and settings don't save yet: `PUT` sends the defaults back. `booking-info` still returns `takenTimes`, not `freeTimes`, `openDays`, `timezone` and `meetingLink`.
 - All four app screens are still sections of one `dashboard.html`. `availability.html`, `settings.html`, `appointments.html` and `reset.html` don't exist.
 - `README.md` holds only the line `# CS-219---Final-Project`.
 - No seed script or test account, and no live URL.
@@ -45,7 +46,7 @@ In plain terms: Ryan makes the app save and load data; Ben makes Sign in, Dashbo
 **In order** (the Backend checklist below has the details and days):
 
 1. ~~Atlas database, `.env`, and the start script, then send teammates the `.env`~~ (done Wednesday, November 25).
-2. ~~`app.js`~~ (done November 25), then placeholder availability and settings routes (by Friday, November 27).
+2. ~~`app.js`, then placeholder availability and settings routes~~ (both done November 25).
 3. Real availability and settings saving (Saturday, November 28).
 4. Booking with saved hours (Sunday, November 29).
 5. Seed script and test account, then the live URL on Render (Monday, November 30).
@@ -142,9 +143,9 @@ Everything is due **Wednesday, December 2**, so there's one week, and Thanksgivi
 
 | Day | Ryan | Ben | Abou | Done when |
 | --- | --- | --- | --- | --- |
-| Wed, Nov 25 (today) | Atlas, `.env`, start script; send the `.env`; `app.js` (all done) | A3 (reset page), no `.env` needed | V1 (`availability.html`), no `.env` needed | All 3 can sign in on their own laptop |
+| Wed, Nov 25 (today) | Atlas, `.env`, start script; send the `.env`; `app.js`; placeholder routes (all done) | A3 (reset page), no `.env` needed | V1 (`availability.html`), no `.env` needed | All 3 can sign in on their own laptop |
 | Thu, Nov 26 (Thanksgiving) | Off, or catch up | Off, or A1, L3 | Off, or T1, README R1, R3, R7 | |
-| Fri, Nov 27 | Placeholder availability and settings routes, then tell Abou | L1 (split pages), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
+| Fri, Nov 27 | Nothing due (Friday's work was done early); can start Saturday's real saving | L1 (split pages), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
 | Sat, Nov 28 | Real availability and settings saving | D1, D2, D3 | V2, V3, T2, T3 (connect to the routes) | Hours and settings survive a reload |
 | Sun, Nov 29 | Booking with saved hours (`timezone`, `meetingLink`, `openDays`, `freeTimes`; refusing times outside hours) | E1–E4 | B3–B6 (booking page) | A guest can book a time inside the saved hours |
 | Mon, Nov 30 | Seed script and test account; deploy to Render | D4–D6; start slides P1, P2 | B7, B8; README R4 with Ryan, R5, R6 | Whole demo runs on the live URL |
@@ -170,10 +171,10 @@ Every route sends and returns JSON. "Sign-in" means the request carries `Authori
 | GET | `/api/appointments` | Yes | nothing | list of appointments | Working (Step 13) |
 | POST | `/api/appointments` | Yes | guestName, guestEmail, date, time, type | the new appointment | Working (Step 13) |
 | POST | `/api/appointments/:id/cancel` | Yes | nothing | message | Working (Step 13) |
-| GET | `/api/availability` | Yes | nothing | the 7 days | Not started |
-| PUT | `/api/availability` | Yes | the 7 days | the saved days | Not started |
-| GET | `/api/settings` | Yes | nothing | name, email, timezone, meetingLink | Not started |
-| PUT | `/api/settings` | Yes | name, email, timezone, meetingLink | the saved settings (name and email also change the account, so `/api/me`, sign-in and the booking link use them) | Not started |
+| GET | `/api/availability` | Yes | nothing | the 7 days | Placeholder: always the defaults |
+| PUT | `/api/availability` | Yes | the 7 days | the saved days | Placeholder: doesn't save, sends the defaults back |
+| GET | `/api/settings` | Yes | nothing | name, email, timezone, meetingLink | Placeholder: real name and email, example timezone and meetingLink |
+| PUT | `/api/settings` | Yes | name, email, timezone, meetingLink | the saved settings (name and email also change the account, so `/api/me`, sign-in and the booking link use them) | Placeholder: doesn't save, sends the current values back |
 | GET | `/api/booking-info?host=EMAIL&date=YYYY-MM-DD` | No | nothing | name, timezone, meetingLink, openDays, freeTimes | Step 13 version only (returns name and takenTimes) |
 | POST | `/api/book` | No | hostEmail, date, time, guestName, guestEmail, notes | message | Step 13 version only (blocks double bookings, not times outside hours) |
 
@@ -263,7 +264,7 @@ Work top to bottom, one commit per item. The teacher said we may use all of the 
 **2. Friday, November 27: unblock the pages**
 
 - [x] `app.js` first (L2), pushed November 25: move the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out out of `dashboard.js` into `public/js/app.js`, and load it in `dashboard.html` before `dashboard.js`. It may only use `user-name`, `user-email`, `user-avatar` and `.signout-button`, so it works on every page with the sidebar. Leave the tab switching and the booking link in `dashboard.js`. **Done when:** `dashboard.html` works exactly as before, with no console errors. Ben's L1 and Abou's V5 wait on this, so message both the moment it's pushed
-- [ ] Placeholder `GET`/`PUT /api/availability` and `GET`/`PUT /api/settings`, signed-in only, returning the example responses. **Done when:** each returns its example for a signed-in request and `{ error }` with 401 otherwise. Message Abou when pushed
+- [x] Placeholder `GET`/`PUT /api/availability` and `GET`/`PUT /api/settings`, signed-in only, returning the example responses. **Done when:** each returns its example for a signed-in request and `{ error }` with 401 otherwise. Message Abou when pushed
 
 **3. Saturday, November 28: real saving**
 
