@@ -4,34 +4,6 @@
 
 // ---------- 1. NEW in Step 11: are we signed in? ----------
 // login.js saved a token in localStorage. No token = not signed in.
-const token = localStorage.getItem("token");
-if (!token) {
-  window.location.href = "index.html";
-}
-
-// Helper: talk to our server and attach the token.
-// Example: await apiRequest("GET", "/api/me")
-async function apiRequest(method, url, data) {
-  const options = {
-    method: method,
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token
-    }
-  };
-  if (data) {
-    options.body = JSON.stringify(data);
-  }
-
-  const response = await fetch(url, options);
-
-  // 401 means "I don't know this token" -> sign in again
-  if (response.status === 401) {
-    localStorage.removeItem("token");
-    window.location.href = "index.html";
-  }
-  return await response.json();
-}
 
 // ---------- 2. Find the elements we need ----------
 const navButtons = document.querySelectorAll(".nav-link");
@@ -39,7 +11,6 @@ const pages = document.querySelectorAll(".page");
 const pageTitle = document.getElementById("page-title");
 const pageSubtitle = document.getElementById("page-subtitle");
 const mobileMenu = document.getElementById("mobile-menu");
-const signOutButtons = document.querySelectorAll(".signout-button");
 
 const pageInfo = {
   dashboard: { title: "Dashboard", subtitle: "Here is your schedule for today." },
@@ -80,24 +51,11 @@ mobileMenu.addEventListener("change", function () {
 
 // ---------- 4. NEW in Step 11: show who is signed in ----------
 
-// "Alex Smith" -> "AS"
-function getInitials(name) {
-  const words = name.split(" ");
-  let initials = words[0].charAt(0);
-  if (words.length > 1) {
-    initials = initials + words[words.length - 1].charAt(0);
-  }
-  return initials.toUpperCase();
-}
-
 async function loadUser() {
   const user = await apiRequest("GET", "/api/me");
   if (user.error) {
     return;
   }
-  document.getElementById("user-name").textContent = user.name;
-  document.getElementById("user-email").textContent = user.email;
-  document.getElementById("user-avatar").textContent = getInitials(user.name);
 
   // Also fill in the Settings form
   document.getElementById("settings-name").value = user.name;
@@ -109,15 +67,6 @@ async function loadUser() {
   shareLink.href = bookingLink;
   shareLink.textContent = window.location.origin + "/" + bookingLink;
 }
-
-// ---------- 5. NEW in Step 11: real sign out ----------
-signOutButtons.forEach(function (button) {
-  button.addEventListener("click", async function () {
-    await apiRequest("POST", "/api/logout"); // the server forgets the token
-    localStorage.removeItem("token");        // the browser forgets it too
-    window.location.href = "index.html";
-  });
-});
 
 // ---------- 6. Start ----------
 showPage("dashboard");

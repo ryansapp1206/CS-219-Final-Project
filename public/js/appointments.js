@@ -1,7 +1,8 @@
 // =========================================================
 // STEP 12 — Appointments saved in MongoDB
 // Same screens as Step 7, but the data now comes from our server.
-// apiRequest(), showPage() and getInitials() come from dashboard.js.
+// showPage() comes from dashboard.js.
+// apiRequest() and getInitials() come from app.js.
 // =========================================================
 
 // ---------- 1. Date helpers (same as Step 7) ----------
