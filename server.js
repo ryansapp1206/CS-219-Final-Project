@@ -338,6 +338,8 @@ async function handleBook(req, res) {
   sendJson(res, 201, { message: "Appointment confirmed." });
 }
 
+// The prototype's default weekly hours. New accounts start with these.
+// One time range per day; times are 24-hour "HH:MM" text, like the appointments.
 const DEFAULT_AVAILABILITY = [
   { day: "monday", enabled: true, start: "09:00", end: "17:00" },
   { day: "tuesday", enabled: true, start: "09:00", end: "17:00" },
@@ -348,14 +350,20 @@ const DEFAULT_AVAILABILITY = [
   { day: "sunday", enabled: false, start: "09:00", end: "17:00" }
 ];
 
+// GET /api/availability  — the signed-in user's weekly hours (all 7 days, Monday first)
+// PLACEHOLDER: always sends the defaults until real saving is in.
 async function handleGetAvailability(req, res, user) {
   sendJson(res, 200, DEFAULT_AVAILABILITY);
 }
 
+// PUT /api/availability  — save the weekly hours
+// PLACEHOLDER: doesn't save yet; sends the defaults back.
 async function handleSaveAvailability(req, res, user) {
   sendJson(res, 200, DEFAULT_AVAILABILITY);
 }
 
+// GET /api/settings  — the signed-in user's profile settings
+// PLACEHOLDER: name and email are real; timezone and meetingLink are examples.
 async function handleGetSettings(req, res, user) {
   sendJson(res, 200, {
     name: user.name,
@@ -365,6 +373,8 @@ async function handleGetSettings(req, res, user) {
   });
 }
 
+// PUT /api/settings  — save the profile settings
+// PLACEHOLDER: doesn't save yet; sends the current values back.
 async function handleSaveSettings(req, res, user) {
   sendJson(res, 200, {
     name: user.name,
@@ -433,6 +443,7 @@ const server = http.createServer(async function (req, res) {
       }
     }
 
+    // Availability and Settings need a signed-in user too
     if (urlPath === "/api/availability" || urlPath === "/api/settings") {
       const user = await getLoggedInUser(req);
       if (!user) {
