@@ -228,7 +228,8 @@
 
   </main>
 
-  <!-- dashboard.js must load FIRST because appointments.js uses its showPage() function -->
+  <!-- app.js loads FIRST: the other two scripts use its apiRequest() and getInitials().
+       dashboard.js loads before appointments.js because appointments.js uses its showPage(). -->
   <script src="js/app.js"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/appointments.js"></script>

@@ -1,11 +1,10 @@
 // =========================================================
-// STEP 13 — Dashboard: menu (Step 5) + only for signed-in users (Step 11)
+// STEP 13 — Dashboard: menu (Step 5), Settings fields and booking link
+// The signed-in check, apiRequest(), getInitials(), the sidebar
+// name and Sign out now live in app.js, which loads first.
 // =========================================================
 
-// ---------- 1. NEW in Step 11: are we signed in? ----------
-// login.js saved a token in localStorage. No token = not signed in.
-
-// ---------- 2. Find the elements we need ----------
+// ---------- 1. Find the elements we need ----------
 const navButtons = document.querySelectorAll(".nav-link");
 const pages = document.querySelectorAll(".page");
 const pageTitle = document.getElementById("page-title");
@@ -19,7 +18,7 @@ const pageInfo = {
   settings: { title: "Settings", subtitle: "Update your basic account information." }
 };
 
-// ---------- 3. The menu (same as Step 5) ----------
+// ---------- 2. The menu (same as Step 5) ----------
 function showPage(pageName) {
   pages.forEach(function (page) {
     page.classList.remove("active");
@@ -49,7 +48,8 @@ mobileMenu.addEventListener("change", function () {
   showPage(mobileMenu.value);
 });
 
-// ---------- 4. NEW in Step 11: show who is signed in ----------
+// ---------- 3. Fill the Settings form and the booking link ----------
+// (app.js fills the sidebar; this needs the same /api/me data.)
 
 async function loadUser() {
   const user = await apiRequest("GET", "/api/me");
@@ -68,6 +68,6 @@ async function loadUser() {
   shareLink.textContent = window.location.origin + "/" + bookingLink;
 }
 
-// ---------- 6. Start ----------
+// ---------- 4. Start ----------
 showPage("dashboard");
 loadUser();
