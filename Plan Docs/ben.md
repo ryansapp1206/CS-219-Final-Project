@@ -33,7 +33,7 @@ Task numbers (like L1) match the [Task List](task-list.md).
 
 - Your files: `public/index.html`, `public/register.html`, `public/reset.html`, `public/dashboard.html`, `public/appointments.html`, their scripts (`login.js`, `register.js`, `reset.js`, `dashboard.js`, `appointments.js`), `public/css/style.css`, and the sidebar block (`<aside>`) in all four app pages.
 - Don't edit `server.js`, `database.js` or `public/js/app.js` (Ryan's). Ask him instead.
-- Don't edit `dashboard.js` or `appointments.js` until Ryan says `app.js` is pushed (Friday). He's moving code out of `dashboard.js`.
+- `app.js` is pushed (November 25), so `dashboard.js` and `appointments.js` are yours to edit. `git pull` first so you have it.
 - On the four signed-in pages, every request to the server goes through `apiRequest()` from `app.js`. The sign-in pages keep their own `fetch` calls, as in Step 13.
 - Tell Abou before you change `style.css` or the sidebar, since his pages use them too.
 
@@ -75,7 +75,7 @@ These pages work without the server: open `public/index.html`, `public/register.
 
 ## Friday, November 27: split the pages and connect the sidebar
 
-Wait for Ryan's message that `app.js` is pushed, then `git pull`. After his push, `app.js` handles the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out. `dashboard.js` still has the tab switching and the booking link, so `dashboard.html` works exactly as before until you split it.
+`app.js` is already pushed (November 25), so you can start these as soon as A3, A1 and L3 are done; `git pull` first. `app.js` handles the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out. `dashboard.js` still has the tab switching, the Settings fields and the booking link (in `loadUser()`), so `dashboard.html` works exactly as before until you split it.
 
 - [ ] **L1: Split Dashboard and Appointments into their own files**
 
@@ -84,13 +84,13 @@ Wait for Ryan's message that `app.js` is pushed, then `git pull`. After his push
     1. Copy `public/dashboard.html` and name the copy `public/appointments.html`.
     2. Change `<title>` to `Appointments | SimpleSchedule`, the top bar heading to "Appointments" and the line under it to "View and manage your scheduled meetings." Delete the top bar's "+ New appointment" button (the Appointments section has its own).
     3. Delete the Dashboard, Availability and Settings `<section>` blocks. Change the Appointments section's first line to `<section class="page active" id="appointments-page">`. Without `active`, the stylesheet hides it.
-    4. At the bottom, load `js/app.js`, then `js/appointments.js`, and nothing else.
+    4. At the bottom, load `js/app.js`, then `js/appointments.js`, and nothing else. Update the comment above the scripts so it says why `app.js` comes first.
 
     **`dashboard.html`:**
 
     5. Delete the Appointments, Availability and Settings `<section>` blocks. Change the Dashboard section's first line to `<section class="page active" id="dashboard-page">`.
     6. Change the top bar's "+ New appointment" `<button>` into a link: `<a class="primary-btn" href="appointments.html#new">+ New appointment</a>`.
-    7. At the bottom, load `js/app.js`, then `js/dashboard.js`. Remove `appointments.js` from this page.
+    7. At the bottom, load `js/app.js`, then `js/dashboard.js`. Remove `appointments.js` from this page, and update the comment above the scripts to match.
 
     **Sidebar, in all four app pages** (`dashboard.html`, `appointments.html`, and Abou's `availability.html` and `settings.html`; tell Abou first):
 
@@ -102,7 +102,7 @@ Wait for Ryan's message that `app.js` is pushed, then `git pull`. After his push
     **`dashboard.js`:**
 
     12. Delete the tab-switching code: the `navButtons`, `pages`, `pageTitle`, `pageSubtitle` and `mobileMenu` lines, `pageInfo`, `showPage()`, the two click and change listeners, and the `showPage("dashboard")` line at the bottom.
-    13. Delete the lines that fill `settings-name` and `settings-email`, if they're still there. Keep the booking link code.
+    13. In `loadUser()`, delete the two lines that fill `settings-name` and `settings-email`. Keep the booking link code. Update the section comments in `dashboard.js` and the header comment in `appointments.js` so they still describe what's in each file.
     14. Move `toDateString()`, `daysFromToday()`, `formatTime()` and `renderDashboard()` from `appointments.js` into `dashboard.js`. Add `let appointments = [];` and a function that gets the list with `apiRequest("GET", "/api/appointments")`, saves it in `appointments` and calls `renderDashboard()`. Call that function at the bottom.
 
     **`appointments.js`:**

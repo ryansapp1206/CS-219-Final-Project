@@ -21,7 +21,7 @@ Your whole job is one checklist, in order, with every detail written in: the [Be
 | --- | --- | --- |
 | Your screens | Sign in, Create account, Reset password, Dashboard, Appointments; `style.css` and the sidebar; slides | Availability, Settings, the public booking page; README |
 | Start now (no `.env` needed) | A3 (reset page), A1 ("Forgot password?" link), L3 (`style.css`) | V1 (`availability.html`), T1 (`settings.html`), README R1, R3, R7 |
-| Friday, after Ryan's `app.js` | L1 (split `dashboard.html` into Dashboard and Appointments, and make the sidebar links work in all four pages), L4 (sidebar look) | V5 (load `app.js` in your two pages), V4, B2 |
+| Friday (`app.js` is already pushed) | L1 (split `dashboard.html` into Dashboard and Appointments, and make the sidebar links work in all four pages), L4 (sidebar look) | V5 (load `app.js` in your two pages), V4, B2 |
 
 Neither of you waits on the other: Abou creates the Availability and Settings pages as new files, and Ben splits `dashboard.html` on Friday. The one shared edit: on Friday Ben changes the sidebar block (`<aside>`) in Abou's two files too, so Abou pulls before working that day and leaves the `<aside>` to Ben. Each checklist has a day for every task. If you swap tasks, tell Ryan so he can update the Owner column of the [Task List](task-list.md).
 

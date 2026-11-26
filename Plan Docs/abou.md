@@ -89,7 +89,7 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
 ## Friday, November 27: connect your pages to `app.js`, start the booking page
 
-Ryan pushes `app.js` and the placeholder routes on Friday and messages the team. Then `git pull`. The placeholder routes send back exactly the example data in the Saturday section.
+`app.js` is already pushed (November 25), so V5 can start as soon as V1 and T1 are done; `git pull` first. Ryan pushes the placeholder routes by Friday and messages you; they send back exactly the example data in the Saturday section.
 
 - [ ] **V5: Load `app.js` in both pages**
 

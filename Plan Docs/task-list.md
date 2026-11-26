@@ -4,7 +4,7 @@ Updated November 25, 2026
 
 ## Status, November 25
 
-Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, and the start script (Ryan's Backend checklist in the [Team Plan](team-plan.md)). A2 and A4 needed no work because Step 13 already matches the prototype there. No other task is started.
+Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, the start script (Ryan's Backend checklist in the [Team Plan](team-plan.md)), and `app.js` (L2, pushed November 25). A2 and A4 needed no work because Step 13 already matches the prototype there. No other task is started.
 
 The day each task is planned for is in the Schedule in the [Team Plan](team-plan.md) and in each checklist; the checklists ([Ben](ben.md), [Abou](abou.md)) also have step-by-step instructions and a "Done when" for every task. If we fall behind, cut E5, L5, D4, D5 and B9 first. If you swap tasks, tell Ryan so he can update the Owner column. Mark a task done by adding "(done)" after its owner.
 
@@ -33,7 +33,7 @@ Step 13 puts all four app screens (Dashboard, Appointments, Availability, Settin
 | # | Task | Starts from | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
 | L1 | One file per app screen | All four screens are sections of `dashboard.html` | Abou (Wednesday): `availability.html` and `settings.html` (V1, T1). Ben (Friday): `appointments.html`, `dashboard.html` trimmed to the Dashboard, `renderDashboard()` moved from `appointments.js` into `dashboard.js`, the tab-switching code deleted, and sidebar buttons turned into links in all four pages. Ben's checklist has the 16 steps | M | Ben's half: L2 | Ben, Abou |
-| L2 | `app.js` shared code | The shared code is inside `dashboard.js` | Move the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out into `public/js/app.js`. It only uses `user-name`, `user-email`, `user-avatar` and `.signout-button`, so it works on any page with the sidebar. `dashboard.html` loads it and still works exactly as before. Friday morning | M | | Ryan |
+| L2 | `app.js` shared code | The shared code is inside `dashboard.js` | Move the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out into `public/js/app.js`. It only uses `user-name`, `user-email`, `user-avatar` and `.signout-button`, so it works on any page with the sidebar. `dashboard.html` loads it and still works exactly as before | M | | Ryan (done) |
 | L3 | `style.css` matches the prototype | Colours and cards are close; font is Arial | Inter font, the prototype's blues and greys, card corners and spacing | M | | Ben |
 | L4 | Sidebar look | Emoji menu, name and email, "Sign out" text button | Line icons, prototype's avatar and account block, sign-out icon; same `<aside>` in all four app pages, keeping the ids `app.js` uses | M | L1 | Ben |
 | L5 | Optional: phone menu | L1 removes Step 13's phone dropdown | A small menu with links to the four pages on phone-width windows; Step 5 has a starting point | S | L4 | Ben |

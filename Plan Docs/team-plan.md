@@ -25,10 +25,10 @@ The due date moved up to December 2, so the whole plan runs on the day-by-day Sc
 
 - Step 13's complete code is in the repo.
 - The Atlas database exists (project "CS 219", free Cluster0, `0.0.0.0/0` allowed), `npm start` loads `.env`, the app connects to the `simpleschedule` database, and Ben and Abou have the `.env`.
+- `public/js/app.js` holds the shared signed-in code, and `dashboard.html` loads it (L2, pushed the evening of November 25). Ben's L1 and L4 and Abou's V5 no longer wait on anything from Ryan.
 
 **Still open:**
 
-- No `app.js`; the shared code is still inside `dashboard.js`.
 - No `/api/availability` or `/api/settings` routes, not even placeholders. `booking-info` still returns `takenTimes`, not `freeTimes`, `openDays`, `timezone` and `meetingLink`.
 - All four app screens are still sections of one `dashboard.html`. `availability.html`, `settings.html`, `appointments.html` and `reset.html` don't exist.
 - `README.md` holds only the line `# CS-219---Final-Project`.
@@ -45,7 +45,7 @@ In plain terms: Ryan makes the app save and load data; Ben makes Sign in, Dashbo
 **In order** (the Backend checklist below has the details and days):
 
 1. ~~Atlas database, `.env`, and the start script, then send teammates the `.env`~~ (done Wednesday, November 25).
-2. `app.js`, then placeholder availability and settings routes (Friday, November 27; started early).
+2. ~~`app.js`~~ (done November 25), then placeholder availability and settings routes (by Friday, November 27).
 3. Real availability and settings saving (Saturday, November 28).
 4. Booking with saved hours (Sunday, November 29).
 5. Seed script and test account, then the live URL on Render (Monday, November 30).
@@ -59,7 +59,7 @@ In plain terms: Ryan makes the app save and load data; Ben makes Sign in, Dashbo
 
 **Start now, no `.env` needed:** build `reset.html` (A3), point "Forgot password?" at it (A1), and restyle `style.css` (L3). These pages open straight from the folder in a browser.
 
-**After that:** on Friday, once Ryan pushes `app.js`, split `dashboard.html` into `dashboard.html` and `appointments.html`, including moving the Dashboard's code from `appointments.js` into `dashboard.js` (L1), and rebuild the sidebar (L4); then the Dashboard greeting and cards, the Appointments rows and form, and the slides. The [Ben Checklist](ben.md) has it day by day, step by step.
+**After that:** on Friday (`app.js` is already pushed), split `dashboard.html` into `dashboard.html` and `appointments.html`, including moving the Dashboard's code from `appointments.js` into `dashboard.js` (L1), and rebuild the sidebar (L4); then the Dashboard greeting and cards, the Appointments rows and form, and the slides. The [Ben Checklist](ben.md) has it day by day, step by step.
 
 **Done when:** each page matches the prototype and shows real data from the server.
 
@@ -120,7 +120,7 @@ Every screen gets its own HTML file and JavaScript file, so each person owns who
 | `availability.html` | Availability | `availability.js` | availability | No (split out; logic is new) |
 | `settings.html` | Settings | `settings.js` | settings | No (split out; logic is new) |
 | `booking.html` | Public booking page | `booking.js` | booking-info, book | Yes, needs changes |
-| `app.js` | Shared by the four app pages | | me, logout | No; to be split out of `dashboard.js`: signed-in check, `apiRequest()`, `getInitials()`, sidebar name, email and initials, Sign out |
+| `app.js` | Shared by the four app pages | | me, logout | Yes (November 25): signed-in check, `apiRequest()`, `getInitials()`, sidebar name, email and initials, Sign out |
 | `style.css` | Shared by every page | | | Yes |
 
 The HTML pages live in `public`, the scripts in `public/js` and the stylesheet in `public/css`. The backend (`server.js`, `database.js`) sits next to `public` and is Ryan's.
@@ -142,9 +142,9 @@ Everything is due **Wednesday, December 2**, so there's one week, and Thanksgivi
 
 | Day | Ryan | Ben | Abou | Done when |
 | --- | --- | --- | --- | --- |
-| Wed, Nov 25 (today) | Atlas, `.env`, start script; send the `.env` (done); start `app.js` | A3 (reset page), no `.env` needed | V1 (`availability.html`), no `.env` needed | All 3 can sign in on their own laptop |
+| Wed, Nov 25 (today) | Atlas, `.env`, start script; send the `.env`; `app.js` (all done) | A3 (reset page), no `.env` needed | V1 (`availability.html`), no `.env` needed | All 3 can sign in on their own laptop |
 | Thu, Nov 26 (Thanksgiving) | Off, or catch up | Off, or A1, L3 | Off, or T1, README R1, R3, R7 | |
-| Fri, Nov 27 | `app.js` first thing, then tell Ben and Abou; placeholder availability and settings routes, then tell Abou | L1 (split pages, after `app.js`), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
+| Fri, Nov 27 | Placeholder availability and settings routes, then tell Abou | L1 (split pages), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
 | Sat, Nov 28 | Real availability and settings saving | D1, D2, D3 | V2, V3, T2, T3 (connect to the routes) | Hours and settings survive a reload |
 | Sun, Nov 29 | Booking with saved hours (`timezone`, `meetingLink`, `openDays`, `freeTimes`; refusing times outside hours) | E1–E4 | B3–B6 (booking page) | A guest can book a time inside the saved hours |
 | Mon, Nov 30 | Seed script and test account; deploy to Render | D4–D6; start slides P1, P2 | B7, B8; README R4 with Ryan, R5, R6 | Whole demo runs on the live URL |
@@ -262,7 +262,7 @@ Work top to bottom, one commit per item. The teacher said we may use all of the 
 
 **2. Friday, November 27: unblock the pages**
 
-- [ ] `app.js` first (L2): move the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out out of `dashboard.js` into `public/js/app.js`, and load it in `dashboard.html` before `dashboard.js`. It may only use `user-name`, `user-email`, `user-avatar` and `.signout-button`, so it works on every page with the sidebar. Leave the tab switching and the booking link in `dashboard.js`. **Done when:** `dashboard.html` works exactly as before, with no console errors. Ben's L1 and Abou's V5 wait on this, so message both the moment it's pushed
+- [x] `app.js` first (L2), pushed November 25: move the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out out of `dashboard.js` into `public/js/app.js`, and load it in `dashboard.html` before `dashboard.js`. It may only use `user-name`, `user-email`, `user-avatar` and `.signout-button`, so it works on every page with the sidebar. Leave the tab switching and the booking link in `dashboard.js`. **Done when:** `dashboard.html` works exactly as before, with no console errors. Ben's L1 and Abou's V5 wait on this, so message both the moment it's pushed
 - [ ] Placeholder `GET`/`PUT /api/availability` and `GET`/`PUT /api/settings`, signed-in only, returning the example responses. **Done when:** each returns its example for a signed-in request and `{ error }` with 401 otherwise. Message Abou when pushed
 
 **3. Saturday, November 28: real saving**
