@@ -20,7 +20,7 @@ Your whole job is one checklist, in order, with every detail written in: the [Be
 | | Ben | Abou |
 | --- | --- | --- |
 | Your screens | Sign in, Create account, Reset password, Dashboard, Appointments; `style.css` and the sidebar; slides | Availability, Settings, the public booking page; README |
-| Start now (no `.env` needed) | A3 (reset page), A1 ("Forgot password?" link), L3 (`style.css`) | V1 (`availability.html`), T1 (`settings.html`), README R1, R3, R7 |
+| Start now | A3 (reset page), A1 ("Forgot password?" link), L3 (`style.css`) | V1 (`availability.html`), T1 (`settings.html`), README R1, R3, R7 |
 | Friday (`app.js` is already pushed) | L1 (split `dashboard.html` into Dashboard and Appointments, and make the sidebar links work in all four pages), L4 (sidebar look) | V5 (load `app.js` in your two pages), V4, B2 |
 
 Neither of you waits on the other: Abou creates the Availability and Settings pages as new files, and Ben splits `dashboard.html` on Friday. The one shared edit: on Friday Ben changes the sidebar block (`<aside>`) in Abou's two files too, so Abou pulls before working that day and leaves the `<aside>` to Ben. Each checklist has a day for every task. If you swap tasks, tell Ryan so he can update the Owner column of the [Task List](task-list.md).
@@ -33,7 +33,7 @@ Open these only when the question comes up.
 | --- | --- |
 | What should this page look like? | The [Figma prototype](https://violet-surly-41566398.figma.site/) |
 | How did the teacher build something similar? | [Snippet steps](snippet-steps.md): find your task number under "In our plan", then open that step's folder in the teacher's [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo |
-| What data will my page get from the server? | [Team Plan](team-plan.md), **API contract**, "Example responses". Build with that sample data until Ryan's route is ready |
+| What data will my page get from the server? | [Team Plan](team-plan.md), **API contract**, "Example responses". Availability and settings already return that sample data; `booking-info` changes on Sunday, so build the booking page against its example until then |
 | What am I allowed to touch? | [Team Plan](team-plan.md), **Rules for the frontend** (four rules, just under the API table) |
 
 The frontend rules in short: on the signed-in pages every request goes through `apiRequest()`, field names match the contract exactly, and you never edit `server.js`, `database.js` or `app.js`.

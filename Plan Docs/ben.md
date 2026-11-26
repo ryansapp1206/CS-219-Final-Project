@@ -39,7 +39,7 @@ Task numbers (like L1) match the [Task List](task-list.md).
 
 **Where to look:** the look comes from the [Figma prototype](https://violet-surly-41566398.figma.site/). How the teacher built something is in the [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo, in the step named on each task.
 
-## Wednesday–Thursday, November 25–26: start now, no `.env` needed
+## Wednesday–Thursday, November 25–26: start now
 
 These pages work without the server: open `public/index.html`, `public/register.html` or `public/reset.html` by double-clicking it, and refresh the browser after each change. The forms won't submit until the server runs, which doesn't matter for layout. Thursday is Thanksgiving, so finish what you can.
 
@@ -65,9 +65,9 @@ These pages work without the server: open `public/index.html`, `public/register.
 
     **Done when:** the three sign-in pages look like the prototype side by side. Tell Abou when it's pushed.
 
-## As soon as Ryan sends the `.env`: run the app
+## Run the app (Ryan sent you the `.env` on November 25)
 
-- [ ] `git pull`, then save the `.env` file in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
+- [ ] `git pull`, then save the `.env` file Ryan sent you in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
 - [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`ben-test@example.com`).
 - [ ] Put the prototype and the running app side by side and write down every difference on Dashboard and Appointments. Check it against the D and E tasks below.
 

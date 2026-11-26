@@ -58,25 +58,25 @@ In plain terms: Ryan makes the app save and load data; Ben makes Sign in, Dashbo
 
 **What it is:** Sign in, Create account, Reset password, Dashboard and Appointments. All but Reset password already work in Step 13, and Sign in and Create account already match the prototype's wording; the job is building Reset password and making the Dashboard and Appointments match the prototype.
 
-**Start now, no `.env` needed:** build `reset.html` (A3), point "Forgot password?" at it (A1), and restyle `style.css` (L3). These pages open straight from the folder in a browser.
+**Start now:** build `reset.html` (A3), point "Forgot password?" at it (A1), and restyle `style.css` (L3). These pages open straight from the folder in a browser.
 
 **After that:** on Friday (`app.js` is already pushed), split `dashboard.html` into `dashboard.html` and `appointments.html`, including moving the Dashboard's code from `appointments.js` into `dashboard.js` (L1), and rebuild the sidebar (L4); then the Dashboard greeting and cards, the Appointments rows and form, and the slides. The [Ben Checklist](ben.md) has it day by day, step by step.
 
 **Done when:** each page matches the prototype and shows real data from the server.
 
-**Needs from Ryan:** the `.env` file and `app.js` (task L2). The pages themselves use routes that already work.
+**Needs from Ryan:** nothing. The `.env` was sent and `app.js` is pushed (November 25), and Ben's pages use routes that already work.
 
 ### Abou: Availability, Settings, the booking page and the README
 
 **What it is:** Availability (weekly hours), Settings (profile), the public page guests use to book, and the README. Availability and Settings exist in Step 13 only as static sections of `dashboard.html` that save nothing; the booking page works but uses six fixed times and blocks weekends.
 
-**Start now, no `.env` needed:** move Availability and Settings into their own files, `availability.html` and `settings.html`, copied from `dashboard.html`, and fix their layouts to the prototype (all 7 days, the three time zones) (V1, T1). Write the README parts that don't depend on the finished app (R1, R3, R7).
+**Start now:** move Availability and Settings into their own files, `availability.html` and `settings.html`, copied from `dashboard.html`, and fix their layouts to the prototype (all 7 days, the three time zones) (V1, T1). Write the README parts that don't depend on the finished app (R1, R3, R7).
 
 **After that:** load and save both pages through Ryan's routes, make the booking page use the host's saved hours and match the prototype's steps, and finish the README. The [Abou Checklist](abou.md) has it day by day, step by step.
 
 **Done when:** hours and settings save and are still there after a reload, and a guest can book a time.
 
-**Needs from Ryan:** the availability and settings routes. The placeholders are enough to start.
+**Needs from Ryan:** only the `booking-info` change (Sunday) for B3–B5 and B7. The `.env` was sent, and `app.js` and the availability and settings placeholder routes are pushed (November 25), so V5, V2, V3, T2 and T3 don't wait on anything.
 
 ## Starting point
 
@@ -139,11 +139,11 @@ Ryan owns the backend. The two teammates split the frontend, README and presenta
 
 ## Schedule
 
-Everything is due **Wednesday, December 2**, so there's one week, and Thanksgiving is in it. Each day ends with something all three of us can check. Ben and Abou start on work that doesn't need the `.env` or any new route, so nobody waits on Ryan.
+Everything is due **Wednesday, December 2**, so there's one week, and Thanksgiving is in it. Each day ends with something all three of us can check. The `.env`, `app.js` and the availability and settings placeholder routes went out on November 25, so the only thing Ben or Abou still waits on is the `booking-info` change (Sunday) for the booking page.
 
 | Day | Ryan | Ben | Abou | Done when |
 | --- | --- | --- | --- | --- |
-| Wed, Nov 25 (today) | Atlas, `.env`, start script; send the `.env`; `app.js`; placeholder routes (all done) | A3 (reset page), no `.env` needed | V1 (`availability.html`), no `.env` needed | All 3 can sign in on their own laptop |
+| Wed, Nov 25 (today) | Atlas, `.env`, start script; send the `.env`; `app.js`; placeholder routes (all done) | A3 (reset page) | V1 (`availability.html`) | All 3 can sign in on their own laptop |
 | Thu, Nov 26 (Thanksgiving) | Off, or catch up | Off, or A1, L3 | Off, or T1, README R1, R3, R7 | |
 | Fri, Nov 27 | Nothing due (Friday's work was done early); can start Saturday's real saving | L1 (split pages), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
 | Sat, Nov 28 | Real availability and settings saving | D1, D2, D3 | V2, V3, T2, T3 (connect to the routes) | Hours and settings survive a reload |

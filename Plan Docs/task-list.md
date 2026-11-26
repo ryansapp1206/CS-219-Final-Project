@@ -12,17 +12,17 @@ The day each task is planned for is in the Schedule in the [Team Plan](team-plan
 
 - **Starts from** says what Step 13 already has, so nobody rebuilds something that exists.
 - **Size** is a rough guess: S = under an hour, M = a few hours, L = a day or more.
-- **Needs** names what must be done first. "Route" means a backend route from Ryan. You can build and style a screen before its route exists, then hook it up later.
+- **Needs** names what must be done first. "Route" means a backend route from Ryan; only the booking tasks still wait on one (the `booking-info` change, Sunday). You can build and style a screen before its route exists, then hook it up later.
 - **The look to match** is the [Figma prototype](https://violet-surly-41566398.figma.site/) for every screen.
 - Ryan's backend work is in the Backend checklist in the [Team Plan](team-plan.md) and isn't repeated here, except L2.
 
 ## Setup (everyone)
 
-Do these as soon as Ryan sends the `.env`.
+Ryan sent everyone the `.env` on November 25, so these can be done now.
 
 | # | Task | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- |
-| S3 | Get Step 13 running on your laptop | `git pull`, save the `.env` from Ryan next to `server.js`, `npm install`, `npm start`, then sign up and sign in. The `.env` isn't in the repo, so pulling doesn't give it to you | M | Ryan sends `.env` | Everyone |
+| S3 | Get Step 13 running on your laptop | `git pull`, save the `.env` from Ryan next to `server.js`, `npm install`, `npm start`, then sign up and sign in. The `.env` isn't in the repo, so pulling doesn't give it to you | M | | Everyone |
 | S4 | Read the API contract | It's in the Team Plan; know the routes your screens will call | S | | Everyone |
 | S5 | Optional: install MongoDB Compass | Lets you see what's saved in the database | S | | Everyone |
 
@@ -32,7 +32,7 @@ Step 13 puts all four app screens (Dashboard, Appointments, Availability, Settin
 
 | # | Task | Starts from | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
-| L1 | One file per app screen | All four screens are sections of `dashboard.html` | Abou (Wednesday): `availability.html` and `settings.html` (V1, T1). Ben (Friday): `appointments.html`, `dashboard.html` trimmed to the Dashboard, `renderDashboard()` moved from `appointments.js` into `dashboard.js`, the tab-switching code deleted, and sidebar buttons turned into links in all four pages. Ben's checklist has the 16 steps | M | Ben's half: L2 | Ben, Abou |
+| L1 | One file per app screen | All four screens are sections of `dashboard.html` | Abou (Wednesday): `availability.html` and `settings.html` (V1, T1). Ben (Friday): `appointments.html`, `dashboard.html` trimmed to the Dashboard, `renderDashboard()` moved from `appointments.js` into `dashboard.js`, the tab-switching code deleted, and sidebar buttons turned into links in all four pages. Ben's checklist has the 16 steps | M | | Ben, Abou |
 | L2 | `app.js` shared code | The shared code is inside `dashboard.js` | Move the signed-in check, `apiRequest()`, `getInitials()`, the sidebar name, email and initials, and Sign out into `public/js/app.js`. It only uses `user-name`, `user-email`, `user-avatar` and `.signout-button`, so it works on any page with the sidebar. `dashboard.html` loads it and still works exactly as before | M | | Ryan (done) |
 | L3 | `style.css` matches the prototype | Colours and cards are close; font is Arial | Inter font, the prototype's blues and greys, card corners and spacing | M | | Ben |
 | L4 | Sidebar look | Emoji menu, name and email, "Sign out" text button | Line icons, prototype's avatar and account block, sign-out icon; same `<aside>` in all four app pages, keeping the ids `app.js` uses | M | L1 | Ben |
@@ -75,10 +75,10 @@ Step 13's Availability is a static section of `dashboard.html`: Monday–Friday 
 | # | Task | Starts from | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
 | V1 | Availability page file | Section in `dashboard.html` | New `availability.html`: 7 rows Monday–Sunday with ids like `monday-start`; Mon–Thu 9–5, Fri 9–3, Sat and Sun "Unavailable"; "Save availability" button | M | | Abou |
-| V5 | Load `app.js` | | Create `availability.js` and `settings.js`; load `app.js` then each page's script; sidebar shows the real user | S | V1, T1, L2 | Abou |
+| V5 | Load `app.js` | | Create `availability.js` and `settings.js`; load `app.js` then each page's script; sidebar shows the real user | S | V1, T1 | Abou |
 | V4 | Row behaviour | | Unchecking shows "Unavailable"; end must be after start, with the message next to that day | S | V5 | Abou |
-| V2 | Load saved hours | | Fill the rows from `GET /api/availability` | S | V5, route | Abou |
-| V3 | Save availability | | Send all 7 days to `PUT /api/availability`; show "Saved." or the error | M | V4, route | Abou |
+| V2 | Load saved hours | | Fill the rows from `GET /api/availability` | S | V5 | Abou |
+| V3 | Save availability | | Send all 7 days to `PUT /api/availability`; show "Saved." or the error | M | V4 | Abou |
 
 ## Settings (`settings.html`)
 
@@ -87,8 +87,8 @@ Step 13's Settings is a static section of `dashboard.html`: nothing loads or sav
 | # | Task | Starts from | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
 | T1 | Settings page file | Section in `dashboard.html` | New `settings.html`: Eastern, Central and Pacific Time (US & Canada); initials avatar with "Profile photo" | S | | Abou |
-| T2 | Load settings | | Fill the four fields from `GET /api/settings` | S | V5, route | Abou |
-| T3 | Save settings | Save button does nothing | Send to `PUT /api/settings`; show the error, or reload the page on success so the sidebar updates | M | T2, route | Abou |
+| T2 | Load settings | | Fill the four fields from `GET /api/settings` | S | V5 | Abou |
+| T3 | Save settings | Save button does nothing | Send to `PUT /api/settings`; show the error, or reload the page on success so the sidebar updates | M | T2 | Abou |
 
 ## Public booking page (`booking.html`)
 

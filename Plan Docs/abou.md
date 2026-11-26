@@ -34,7 +34,7 @@ Task numbers (like V1) match the [Task List](task-list.md).
 
 **Where to look:** the look comes from the [Figma prototype](https://violet-surly-41566398.figma.site/). How the teacher built something is in the [SimpleSchedule-Snippets](https://github.com/ShahinurEdu/SimpleSchedule-Snippets) repo, in the step named on each task.
 
-## Wednesday–Thursday, November 25–26: start now, no `.env` needed
+## Wednesday–Thursday, November 25–26: start now
 
 Your two screens become their own files. Until Friday they have no `<script>` tags, so you can open them by double-clicking and refresh after each change. Thursday is Thanksgiving, so finish what you can.
 
@@ -80,9 +80,9 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
     **Done when:** the section is on GitHub with the snippets repo listed first. Keep adding until December 2.
 
-## As soon as Ryan sends the `.env`: run the app
+## Run the app (Ryan sent you the `.env` on November 25)
 
-- [ ] `git pull`, then save the `.env` file in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
+- [ ] `git pull`, then save the `.env` file Ryan sent you in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
 - [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`abou-test@example.com`).
 
     **Done when:** you can sign in and see the Dashboard.
