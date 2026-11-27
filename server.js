@@ -378,12 +378,16 @@ async function handleBook(req, res) {
     return;
   }
 
-  const week = host.availability || DEFAULT_AVAILABILITY;
+  // Refuse a day or time outside the host's hours. We use the same 30-minute slots
+  // that booking-info offers, so book accepts exactly the times the booking page can show.
+  const week = host.availability || DEFAULT_AVAILABILITY; // saved hours, or the defaults
   const hours = week.find(function (day) { return day.day === dayNameFromDate(date); });
+  // No match means the date isn't a real one (like 2026-13-45); not enabled means a day off
   if (!hours || !hours.enabled) {
     sendJson(res, 400, { error: "Sorry, that day isn't available. Please pick another day." });
     return;
   }
+  // Catches too early, too late (a meeting that would run past closing) and odd times like 10:15
   if (!slotsForDay(hours).includes(time)) {
     sendJson(res, 400, { error: "Sorry, that time isn't available. Please pick another time." });
     return;
