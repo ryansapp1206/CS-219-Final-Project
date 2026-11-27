@@ -282,7 +282,19 @@ async function handleBookingInfo(req, res) {
     return appointment.time;
   });
 
-  sendJson(res, 200, { name: host.name, takenTimes: takenTimes });
+  const week = host.availability || DEFAULT_AVAILABILITY;
+
+  const openDays = week
+    .filter(function (day) { return day.enabled; })
+    .map(function (day) { return day.day; });
+
+  sendJson(res, 200, {
+    name: host.name,
+    timezone: host.timezone || TIMEZONES[0],
+    meetingLink: host.meetingLink || "",
+    openDays: openDays,
+    takenTimes: takenTimes
+  });
 }
 
 // POST /api/book  — PUBLIC: a guest books a time with a host
