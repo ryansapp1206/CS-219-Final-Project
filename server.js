@@ -261,23 +261,32 @@ async function handleCancelAppointment(req, res, user, id) {
   sendJson(res, 200, { message: "Appointment cancelled." });
 }
 
+// ---------- Time helpers for the booking routes ----------
+// Times are "HH:MM" text. To count in 30-minute steps, we turn them into minutes after midnight.
+
+// "09:30" -> 570
 function timeToMinutes(time) {
   const parts = time.split(":");
   return Number(parts[0]) * 60 + Number(parts[1]);
 }
 
+// 570 -> "09:30" (padStart adds the leading zero, so 9 becomes "09")
 function minutesToTime(minutes) {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
   return String(hours).padStart(2, "0") + ":" + String(mins).padStart(2, "0");
 }
 
+// "2026-12-04" -> "friday"
+// We read the date as UTC, so the server's own time zone can't shift it to the day before.
 function dayNameFromDate(date) {
   const dayNumber = new Date(date + "T00:00:00Z").getUTCDay(); // 0 = Sunday ... 6 = Saturday
   const names = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
   return names[dayNumber];
 }
 
+// Every 30-minute start time that fits inside one day's hours.
+// 09:00-15:00 gives 09:00, 09:30, ..., 14:30 (a 14:30 meeting ends right at 15:00)
 function slotsForDay(hours) {
   const slots = [];
   const end = timeToMinutes(hours.end);
@@ -287,8 +296,11 @@ function slotsForDay(hours) {
   return slots;
 }
 
+// GET /api/booking-info?host=alex@example.com&date=2026-12-03
+// PUBLIC (no sign in): the host's name, time zone, meeting link and open days,
+// plus the free 30-minute times on that date (empty when no date is sent or that day is off)
 async function handleBookingInfo(req, res) {
-  const url = new URL(req.url, "http://localhost");
+  const url = new URL(req.url, "http://localhost"); // helps us read the ?host=...&date=... part
   const hostEmail = String(url.searchParams.get("host") || "").toLowerCase();
   const date = String(url.searchParams.get("date") || "");
 
@@ -298,18 +310,22 @@ async function handleBookingInfo(req, res) {
     return;
   }
 
+  // a) The host's saved hours, or the defaults if they never saved (same as GET /api/availability)
   const week = host.availability || DEFAULT_AVAILABILITY;
 
+  // b) Days the host is open, so the calendar can grey out the rest
   const openDays = week
     .filter(function (day) { return day.enabled; })
     .map(function (day) { return day.day; });
 
+  // c) The free times on that date. Stays empty if there's no date or the day is off.
   let freeTimes = [];
   if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     const dayName = dayNameFromDate(date);
     const hours = week.find(function (day) { return day.day === dayName; });
 
     if (hours && hours.enabled) {
+      // Times that are already booked on that date
       const booked = await db.collection("appointments")
         .find({ userId: host._id, date: date, status: "upcoming" })
         .toArray();
@@ -317,6 +333,7 @@ async function handleBookingInfo(req, res) {
         return appointment.time;
       });
 
+      // Every 30-minute slot in that day's hours, minus the booked ones
       freeTimes = slotsForDay(hours).filter(function (time) {
         return !takenTimes.includes(time);
       });
