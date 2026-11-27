@@ -378,6 +378,17 @@ async function handleBook(req, res) {
     return;
   }
 
+  const week = host.availability || DEFAULT_AVAILABILITY;
+  const hours = week.find(function (day) { return day.day === dayNameFromDate(date); });
+  if (!hours || !hours.enabled) {
+    sendJson(res, 400, { error: "Sorry, that day isn't available. Please pick another day." });
+    return;
+  }
+  if (!slotsForDay(hours).includes(time)) {
+    sendJson(res, 400, { error: "Sorry, that time isn't available. Please pick another time." });
+    return;
+  }
+
   // Don't allow two bookings at the same time
   const alreadyBooked = await db.collection("appointments").findOne({
     userId: host._id, date: date, time: time, status: "upcoming"
