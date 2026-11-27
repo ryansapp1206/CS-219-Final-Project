@@ -62,19 +62,19 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
     **Done when:** double-clicking `settings.html` shows the Profile card matching the prototype with the three time zones. Commit and push.
 
-- [ ] **R1: README title, names and description**
+- [X] **R1: README title, names and description**
 
     Replace `# CS-219---Final-Project` with `# SimpleSchedule`, then our three names, then 2–3 sentences on what the app does and who would use it.
 
     **Done when:** the README on GitHub shows the title, three names and the description.
 
-- [ ] **R3: README technologies**
+- [X] **R3: README technologies**
 
     A "Technologies used" section listing HTML, CSS, JavaScript, Node.js, MongoDB (Atlas), Git and GitHub.
 
     **Done when:** the section is on GitHub.
 
-- [ ] **R7: README outside resources**
+- [X] **R7: README outside resources**
 
     A "Resources" section with links: the teacher's snippets repo first (https://github.com/ShahinurEdu/SimpleSchedule-Snippets), since our starting code is its Step 13. Ask Ryan and Ben for theirs and keep adding as you go.
 
@@ -82,8 +82,8 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
 ## Run the app (Ryan sent you the `.env` on November 25)
 
-- [ ] `git pull`, then save the `.env` file Ryan sent you in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
-- [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`abou-test@example.com`).
+- [X] `git pull`, then save the `.env` file Ryan sent you in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
+- [X] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`abou-test@example.com`).
 
     **Done when:** you can sign in and see the Dashboard.
 
