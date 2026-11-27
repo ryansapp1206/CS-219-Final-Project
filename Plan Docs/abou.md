@@ -99,7 +99,7 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
     **Done when:** signed in, both pages show your real name and email in the sidebar, Sign out works, and the browser console (F12) shows no red errors. Signed out, opening either page sends you to Sign in.
 
-- [ ] **V4: Make the day rows behave (in `availability.js`)**
+- [X] **V4: Make the day rows behave (in `availability.js`)**
 
     1. Unchecking a day hides its two times and shows "Unavailable"; checking it shows the times again.
     2. If a checked day's end time isn't after its start time, show "End time must be after start time." next to that day.
