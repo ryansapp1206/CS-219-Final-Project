@@ -261,10 +261,34 @@ async function handleCancelAppointment(req, res, user, id) {
   sendJson(res, 200, { message: "Appointment cancelled." });
 }
 
-// GET /api/booking-info?host=alex@example.com&date=2026-12-03
-// PUBLIC (no sign in): the host's name, and which times are already taken that day
+function timeToMinutes(time) {
+  const parts = time.split(":");
+  return Number(parts[0]) * 60 + Number(parts[1]);
+}
+
+function minutesToTime(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return String(hours).padStart(2, "0") + ":" + String(mins).padStart(2, "0");
+}
+
+function dayNameFromDate(date) {
+  const dayNumber = new Date(date + "T00:00:00Z").getUTCDay(); // 0 = Sunday ... 6 = Saturday
+  const names = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  return names[dayNumber];
+}
+
+function slotsForDay(hours) {
+  const slots = [];
+  const end = timeToMinutes(hours.end);
+  for (let minutes = timeToMinutes(hours.start); minutes + 30 <= end; minutes = minutes + 30) {
+    slots.push(minutesToTime(minutes));
+  }
+  return slots;
+}
+
 async function handleBookingInfo(req, res) {
-  const url = new URL(req.url, "http://localhost"); // helps us read the ?host=...&date=... part
+  const url = new URL(req.url, "http://localhost");
   const hostEmail = String(url.searchParams.get("host") || "").toLowerCase();
   const date = String(url.searchParams.get("date") || "");
 
@@ -274,26 +298,37 @@ async function handleBookingInfo(req, res) {
     return;
   }
 
-  // Times that are already booked on that date
-  const booked = await db.collection("appointments")
-    .find({ userId: host._id, date: date, status: "upcoming" })
-    .toArray();
-  const takenTimes = booked.map(function (appointment) {
-    return appointment.time;
-  });
-
   const week = host.availability || DEFAULT_AVAILABILITY;
 
   const openDays = week
     .filter(function (day) { return day.enabled; })
     .map(function (day) { return day.day; });
 
+  let freeTimes = [];
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    const dayName = dayNameFromDate(date);
+    const hours = week.find(function (day) { return day.day === dayName; });
+
+    if (hours && hours.enabled) {
+      const booked = await db.collection("appointments")
+        .find({ userId: host._id, date: date, status: "upcoming" })
+        .toArray();
+      const takenTimes = booked.map(function (appointment) {
+        return appointment.time;
+      });
+
+      freeTimes = slotsForDay(hours).filter(function (time) {
+        return !takenTimes.includes(time);
+      });
+    }
+  }
+
   sendJson(res, 200, {
     name: host.name,
     timezone: host.timezone || TIMEZONES[0],
     meetingLink: host.meetingLink || "",
     openDays: openDays,
-    takenTimes: takenTimes
+    freeTimes: freeTimes
   });
 }
 
