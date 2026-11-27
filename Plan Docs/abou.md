@@ -38,7 +38,7 @@ Task numbers (like V1) match the [Task List](task-list.md).
 
 Your two screens become their own files. Until Friday they have no `<script>` tags, so you can open them by double-clicking and refresh after each change. Thursday is Thanksgiving, so finish what you can.
 
-- [ ] **V1: Make `availability.html`**
+- [X] **V1: Make `availability.html`**
 
     1. Copy `public/dashboard.html` and name the copy `public/availability.html`. Don't change `dashboard.html`.
     2. In the copy, change `<title>` to `Availability | SimpleSchedule`. In the top bar, change the heading to "Availability" and the line under it to "Set the days and times when people can book you." Delete the top bar's "+ New appointment" button.
