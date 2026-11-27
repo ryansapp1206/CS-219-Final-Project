@@ -51,7 +51,7 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
     **Done when:** double-clicking `availability.html` shows the sidebar and 7 rows that match the prototype, Saturday and Sunday say "Unavailable", the Save button is there, and `dashboard.html` is unchanged. Commit and push.
 
-- [ ] **T1: Make `settings.html`**
+- [X] **T1: Make `settings.html`**
 
     1. Copy `public/dashboard.html` and name the copy `public/settings.html`.
     2. Change `<title>` to `Settings | SimpleSchedule`, the top bar heading to "Settings" and the line under it to "Update your basic account information." Delete the top bar's "+ New appointment" button.
