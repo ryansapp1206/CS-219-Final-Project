@@ -28,11 +28,12 @@ The due date moved up to December 2, so the whole plan runs on the day-by-day Sc
 - `public/js/app.js` holds the shared signed-in code, and `dashboard.html` loads it (L2, pushed the evening of November 25).
 - `availability.html` and `settings.html` exist with their own scripts, load `app.js`, and load and save through the routes (Abou: V1–V5, T1–T3, November 27).
 - **Availability saves for real** (Ryan, November 27): `PUT /api/availability` checks the 7 days and saves them on the user's document; `GET` returns the saved week, or the default hours for an account that hasn't saved. A saved week survives a server restart.
+- **Settings save for real** (Ryan, November 27): `PUT /api/settings` checks the name, email and time zone, refuses an email another account uses, and saves all four fields on the user's document, so `/api/me` and sign-in use the new name and email. `GET` returns the saved values, or Eastern Time and an empty meeting link for an account that hasn't saved.
 - The README has its title, team, description, technologies and resources (Abou: R1, R3, R7, November 27).
 
 **Still open:**
 
-- Settings don't save yet: `PUT /api/settings` sends the current values back. `booking-info` still returns `takenTimes`, not `freeTimes`, `openDays`, `timezone` and `meetingLink`, and `book` doesn't check the host's hours.
+- `booking-info` still returns `takenTimes`, not `freeTimes`, `openDays`, `timezone` and `meetingLink`, and `book` doesn't check the host's hours.
 - Dashboard and Appointments are still sections of one `dashboard.html`, and its sidebar still switches sections instead of linking to `availability.html` and `settings.html` (Ben's L1, due November 27). `appointments.html` and `reset.html` don't exist.
 - README items 2, 4, 5 and 6 (screenshots, install and run, live URL, test account).
 - No seed script or test account, and no live URL.
@@ -49,7 +50,7 @@ In plain terms: Ryan makes the app save and load data; Ben makes Sign in, Dashbo
 
 1. ~~Atlas database, `.env`, and the start script, then send teammates the `.env`~~ (done Wednesday, November 25).
 2. ~~`app.js`, then placeholder availability and settings routes~~ (both done November 25).
-3. ~~Real availability saving~~ (done November 27), then real settings saving (Saturday, November 28).
+3. ~~Real availability and settings saving~~ (both done November 27, a day early).
 4. Booking with saved hours (Sunday, November 29).
 5. Seed script and test account, then the live URL on Render (Monday, November 30).
 6. Fix what the demo run turns up (Tuesday, December 1).
@@ -147,8 +148,8 @@ Everything is due **Wednesday, December 2**, so there's one week, and Thanksgivi
 | --- | --- | --- | --- | --- |
 | Wed, Nov 25 (today) | Atlas, `.env`, start script; send the `.env`; `app.js`; placeholder routes (all done) | A3 (reset page) | V1 (`availability.html`) | All 3 can sign in on their own laptop |
 | Thu, Nov 26 (Thanksgiving) | Off, or catch up | Off, or A1, L3 | Off, or T1, README R1, R3, R7 | |
-| Fri, Nov 27 | Nothing due (Friday's work was done early); real availability saving (done) | L1 (split pages), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
-| Sat, Nov 28 | Real settings saving (availability done Friday) | D1, D2, D3 | V2, V3, T2, T3 (connect to the routes) | Hours and settings survive a reload |
+| Fri, Nov 27 | Nothing due (Friday's work was done early); real availability and settings saving (done) | L1 (split pages), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
+| Sat, Nov 28 | Nothing due (real saving was done Friday); can start Sunday's booking work | D1, D2, D3 | V2, V3, T2, T3 (connect to the routes) | Hours and settings survive a reload |
 | Sun, Nov 29 | Booking with saved hours (`timezone`, `meetingLink`, `openDays`, `freeTimes`; refusing times outside hours) | E1–E4 | B3–B6 (booking page) | A guest can book a time inside the saved hours |
 | Mon, Nov 30 | Seed script and test account; deploy to Render | D4–D6; start slides P1, P2 | B7, B8; README R4 with Ryan, R5, R6 | Whole demo runs on the live URL |
 | Tue, Dec 1 | Fix bugs from the demo run | Fix bugs; P3, P4; screenshots of your pages | Fix bugs; Q2 fresh-clone test; R2 screenshots | Fresh clone works from the README; first rehearsal |
@@ -175,8 +176,8 @@ Every route sends and returns JSON. "Sign-in" means the request carries `Authori
 | POST | `/api/appointments/:id/cancel` | Yes | nothing | message | Working (Step 13) |
 | GET | `/api/availability` | Yes | nothing | the 7 days | Working (Nov 27): the saved week, or the defaults if none saved |
 | PUT | `/api/availability` | Yes | the 7 days | the saved days | Working (Nov 27): checks and saves the week; 400 with `{ error }` for bad days or times |
-| GET | `/api/settings` | Yes | nothing | name, email, timezone, meetingLink | Placeholder: real name and email, example timezone and meetingLink |
-| PUT | `/api/settings` | Yes | name, email, timezone, meetingLink | the saved settings (name and email also change the account, so `/api/me`, sign-in and the booking link use them) | Placeholder: doesn't save, sends the current values back |
+| GET | `/api/settings` | Yes | nothing | name, email, timezone, meetingLink | Working (Nov 27): the saved values, or Eastern Time and an empty link if none saved |
+| PUT | `/api/settings` | Yes | name, email, timezone, meetingLink | the saved settings (name and email also change the account, so `/api/me`, sign-in and the booking link use them) | Working (Nov 27): checks and saves all four; 409 with `{ error }` if another account has the email |
 | GET | `/api/booking-info?host=EMAIL&date=YYYY-MM-DD` | No | nothing | name, timezone, meetingLink, openDays, freeTimes | Step 13 version only (returns name and takenTimes) |
 | POST | `/api/book` | No | hostEmail, date, time, guestName, guestEmail, notes | message | Step 13 version only (blocks double bookings, not times outside hours) |
 
@@ -271,7 +272,7 @@ Work top to bottom, one commit per item. The teacher said we may use all of the 
 **3. Saturday, November 28: real saving**
 
 - [x] Real availability saving (done November 27), with the prototype's default hours for an account that hasn't saved any. **Done when:** a saved week comes back from `GET` after a server restart
-- [ ] Real settings saving; the name and email update the account itself; refuse an email another account already uses. **Done when:** after saving a new name, `/api/me` returns it, and saving another account's email returns an error
+- [x] Real settings saving (done November 27); the name and email update the account itself; refuse an email another account already uses. **Done when:** after saving a new name, `/api/me` returns it, and saving another account's email returns an error
 
 **4. Sunday, November 29: booking uses saved hours**
 
