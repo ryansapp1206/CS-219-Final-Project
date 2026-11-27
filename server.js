@@ -415,14 +415,12 @@ const TIMEZONES = [
   "Pacific Time (US & Canada)"
 ];
 
-// GET /api/settings  — the signed-in user's profile settings
-// PLACEHOLDER: name and email are real; timezone and meetingLink are examples.
 async function handleGetSettings(req, res, user) {
   sendJson(res, 200, {
     name: user.name,
     email: user.email,
-    timezone: "Eastern Time (US & Canada)",
-    meetingLink: "https://meet.example.com/alex"
+    timezone: user.timezone || TIMEZONES[0],
+    meetingLink: user.meetingLink || ""
   });
 }
 
