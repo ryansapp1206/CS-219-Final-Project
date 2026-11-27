@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Availability | SimpleSchedule</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">S</span>
+      <span>SimpleSchedule</span>
+    </div>
+    <nav>
+      <button class="nav-link" data-page="dashboard"> Dashboard</button>
+      <button class="nav-link" data-page="appointments"> Appointments</button>
+      <button class="nav-link" data-page="availability"> Availability</button>
+      <button class="nav-link" data-page="settings"> Settings</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="avatar" id="user-avatar">AS</div>
+      <div>
+        <p class="account-name" id="user-name">Alex Smith</p>
+        <p class="account-email" id="user-email">alex@example.com</p>
+      </div>
+      <button class="signout-button">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="mobile-bar">
+      <div class="brand">
+        <span class="logo">S</span>
+        <span>SimpleSchedule</span>
+      </div>
+      <button class="signout-button">Sign out</button>
+      <select id="mobile-menu" aria-label="Current page">
+        <option value="dashboard">Dashboard</option>
+        <option value="appointments">Appointments</option>
+        <option value="availability">Availability</option>
+        <option value="settings">Settings</option>
+      </select>
+    </div>
+
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">Availability</h1>
+        <p id="page-subtitle">Set the days and times that people can book.</p>
+      </div>
+    </header>
+
+    <section class="page active" id="availability-page">
+      <div class="panel">
+        <h2>Weekly hours</h2>
+        <p class="muted">Times when people can book an appointment.</p>
+
+      <div class="day-row" id="monday-row">
+        <label><input type="checkbox" id="monday-enabled" checked> Monday</label>
+        <span id="monday-times"><input type="time" id="monday-start" value="09:00"> to <input type="time" id="monday-end" value="17:00"></span>
+        <span class="muted hidden" id="monday-unavailable">Unavailable</span>
+        <span class="error-message hidden" id="monday-error"></span>
+      </div>
+      <div class="day-row" id="tuesday-row">
+        <label><input type="checkbox" id="tuesday-enabled" checked> Tuesday</label>
+        <span id="tuesday-times"><input type="time" id="tuesday-start" value="09:00"> to <input type="time" id="tuesday-end" value="17:00"></span>
+        <span class="muted hidden" id="tuesday-unavailable">Unavailable</span>
+        <span class="error-message hidden" id="tuesday-error"></span>
+      </div>
+      <div class="day-row" id="wednesday-row">
+        <label><input type="checkbox" id="wednesday-enabled" checked> Wednesday</label>
+        <span id="wednesday-times"><input type="time" id="wednesday-start" value="09:00"> to <input type="time" id="wednesday-end" value="17:00"></span>
+        <span class="muted hidden" id="wednesday-unavailable">Unavailable</span>
+        <span class="error-message hidden" id="wednesday-error"></span>
+      </div>
+      <div class="day-row" id="thursday-row">
+        <label><input type="checkbox" id="thursday-enabled" checked> Thursday</label>
+        <span id="thursday-times"><input type="time" id="thursday-start" value="09:00"> to <input type="time" id="thursday-end" value="17:00"></span>
+        <span class="muted hidden" id="thursday-unavailable">Unavailable</span>
+        <span class="error-message hidden" id="thursday-error"></span>
+      </div>
+      <div class="day-row" id="friday-row">
+        <label><input type="checkbox" id="friday-enabled" checked> Friday</label>
+        <span id="friday-times"><input type="time" id="friday-start" value="09:00"> to <input type="time" id="friday-end" value="15:00"></span>
+        <span class="muted hidden" id="friday-unavailable">Unavailable</span>
+        <span class="error-message hidden" id="friday-error"></span>
+      </div>
+      <div class="day-row" id="saturday-row">
+        <label><input type="checkbox" id="saturday-enabled"> Saturday</label>
+        <span id="saturday-times" class="hidden"><input type="time" id="saturday-start" value="09:00"> to <input type="time" id="saturday-end" value="17:00"></span>
+        <span class="muted" id="saturday-unavailable">Unavailable</span>
+        <span class="error-message hidden" id="saturday-error"></span>
+      </div>
+      <div class="day-row" id="sunday-row">
+        <label><input type="checkbox" id="sunday-enabled"> Sunday</label>
+        <span id="sunday-times" class="hidden"><input type="time" id="sunday-start" value="09:00"> to <input type="time" id="sunday-end" value="17:00"></span>
+        <span class="muted" id="sunday-unavailable">Unavailable</span>
+        <span class="error-message hidden" id="sunday-error"></span>
+      </div>
+
+        <div class="info-box">
+          <strong>Keep it simple.</strong> For this project, each day needs only one available time range.
+        </div>
+
+        <p class="error-message hidden" id="availability-error"></p>
+        <p class="success-message hidden" id="availability-notice"></p>
+        <button type="button" class="primary-btn" id="save-availability">Save availability</button>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
