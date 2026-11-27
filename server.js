@@ -409,12 +409,16 @@ async function handleSaveAvailability(req, res, user) {
   sendJson(res, 200, week);
 }
 
+// The three time zones in the Settings dropdown (the exact text the page sends)
 const TIMEZONES = [
   "Eastern Time (US & Canada)",
   "Central Time (US & Canada)",
   "Pacific Time (US & Canada)"
 ];
 
+// GET /api/settings  — the signed-in user's profile settings
+// Name and email always come from the account. Time zone and meeting link are saved on the
+// user's document too; an account that has never saved gets Eastern Time and an empty link.
 async function handleGetSettings(req, res, user) {
   sendJson(res, 200, {
     name: user.name,
@@ -424,13 +428,16 @@ async function handleGetSettings(req, res, user) {
   });
 }
 
+// PUT /api/settings  — save the profile settings
+// Name and email change the account itself, so /api/me, sign-in and the booking link use them.
 async function handleSaveSettings(req, res, user) {
   const body = await readBody(req);
   const name = String(body.name || "").trim();
   const email = String(body.email || "").trim().toLowerCase();
   const timezone = String(body.timezone || "");
-  const meetingLink = String(body.meetingLink || "").trim();
+  const meetingLink = String(body.meetingLink || "").trim(); // any text, or empty
 
+  // a) Check the data AGAIN on the server, like register does. Never trust the browser!
   if (name.length < 2) {
     sendJson(res, 400, { error: "Please enter your full name." });
     return;
@@ -439,17 +446,22 @@ async function handleSaveSettings(req, res, user) {
     sendJson(res, 400, { error: "Please enter a valid email address." });
     return;
   }
+  // Only the dropdown's three time zones are allowed
   if (!TIMEZONES.includes(timezone)) {
     sendJson(res, 400, { error: "Please choose a time zone." });
     return;
   }
 
+  // b) Is this email used by a DIFFERENT account?
+  //    $ne means "not equal", so your own account doesn't count and keeping your email still works.
   const otherUser = await db.collection("users").findOne({ email: email, _id: { $ne: user._id } });
   if (otherUser) {
     sendJson(res, 409, { error: "An account with this email already exists." });
     return;
   }
 
+  // c) Save all four fields on this user's document ($set adds timezone and meetingLink the first time).
+  //    Sessions store the user's _id, not the email, so changing the email doesn't sign anyone out.
   await db.collection("users").updateOne(
     { _id: user._id },
     { $set: { name: name, email: email, timezone: timezone, meetingLink: meetingLink } }
