@@ -91,7 +91,7 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
 `app.js` is already pushed (November 25), so V5 can start as soon as V1 and T1 are done; `git pull` first. The placeholder availability and settings routes are pushed too (November 25); they send back the example data in the Saturday section, with your real name and email for settings.
 
-- [ ] **V5: Load `app.js` in both pages**
+- [X] **V5: Load `app.js` in both pages**
 
     1. Create two empty files: `public/js/availability.js` and `public/js/settings.js`.
     2. At the bottom of `availability.html`, just before `</body>`, add `<script src="js/app.js"></script>` and then `<script src="js/availability.js"></script>`. Do the same in `settings.html` with `settings.js`.
