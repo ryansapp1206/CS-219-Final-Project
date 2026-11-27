@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | SimpleSchedule</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">S</span>
+      <span>SimpleSchedule</span>
+    </div>
+    <nav>
+      <button class="nav-link" data-page="dashboard"> Dashboard</button>
+      <button class="nav-link" data-page="appointments"> Appointments</button>
+      <button class="nav-link" data-page="availability"> Availability</button>
+      <button class="nav-link" data-page="settings"> Settings</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="avatar" id="user-avatar">AS</div>
+      <div>
+        <p class="account-name" id="user-name">Alex Smith</p>
+        <p class="account-email" id="user-email">alex@example.com</p>
+      </div>
+      <button class="signout-button">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="mobile-bar">
+      <div class="brand">
+        <span class="logo">S</span>
+        <span>SimpleSchedule</span>
+      </div>
+      <button class="signout-button">Sign out</button>
+      <select id="mobile-menu" aria-label="Current page">
+        <option value="dashboard">Dashboard</option>
+        <option value="appointments">Appointments</option>
+        <option value="availability">Availability</option>
+        <option value="settings">Settings</option>
+      </select>
+    </div>
+
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">Settings</h1>
+        <p id="page-subtitle">Update your basic account information.</p>
+      </div>
+    </header>
+
+    <section class="page active" id="settings-page">
+      <form class="panel simple-form" id="settings-form" novalidate>
+        <h2>Profile</h2>
+        <p class="muted">This information appears on your public booking page.</p>
+
+        <div style="display:flex; align-items:center; gap:14px; margin:12px 0;">
+          <div class="avatar" id="settings-avatar">AS</div>
+          <div>
+            <p style="margin:0;"><strong>Profile photo</strong></p>
+            <p class="muted" style="margin:0;">Initials are enough for the minimal version.</p>
+          </div>
+        </div>
+
+        <label for="settings-name">Full name</label>
+        <input type="text" id="settings-name" value="Alex Smith">
+
+        <label for="settings-email">Email address</label>
+        <input type="email" id="settings-email" value="alex@example.com">
+
+        <label for="settings-timezone">Time zone</label>
+        <select id="settings-timezone">
+          <option>Eastern Time (US &amp; Canada)</option>
+          <option>Central Time (US &amp; Canada)</option>
+          <option>Pacific Time (US &amp; Canada)</option>
+        </select>
+
+        <label for="settings-link">Meeting link</label>
+        <input type="url" id="settings-link" value="https://meet.example.com/alex">
+
+        <p class="error-message hidden" id="settings-error"></p>
+        <p class="success-message hidden" id="settings-notice"></p>
+        <button type="submit" class="primary-btn" id="save-settings">Save settings</button>
+      </form>
+    </section>
+
+  </main>
+</body>
+</html>
