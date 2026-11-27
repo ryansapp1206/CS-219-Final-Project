@@ -128,13 +128,13 @@ The routes already answer with placeholder data (pushed November 25), so you can
 
 (The real list has all 7 days.)
 
-- [ ] **V2: Load saved hours**
+- [X] **V2: Load saved hours**
 
     When the page opens, call `apiRequest("GET", "/api/availability")` and set each row's checkbox, start and end from it, including the "Unavailable" state.
 
     **Done when:** the rows show what the server sends.
 
-- [ ] **V3: Save hours**
+- [X] **V3: Save hours**
 
     Clicking "Save availability" builds the 7-day list in the shape above and sends it with `apiRequest("PUT", "/api/availability", days)`. Don't send if V4 found a problem. Show "Saved." or the server's `error` message.
 
