@@ -147,13 +147,13 @@ The routes already answer with placeholder data (pushed November 25), so you can
   "timezone": "Eastern Time (US & Canada)", "meetingLink": "https://meet.example.com/alex" }
 ```
 
-- [ ] **T2: Load settings**
+- [X] **T2: Load settings**
 
     When the page opens, call `apiRequest("GET", "/api/settings")` and fill the four fields and the avatar initials.
 
     **Done when:** the fields show what the server sends.
 
-- [ ] **T3: Save settings**
+- [X] **T3: Save settings**
 
     Clicking "Save settings" sends the four fields with `apiRequest("PUT", "/api/settings", settings)`. On an error (for example, an email another account uses), show the server's message. On success, reload the page so the sidebar shows the new name and email.
 

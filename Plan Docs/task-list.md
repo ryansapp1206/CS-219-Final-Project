@@ -2,9 +2,9 @@
 
 Updated November 25, 2026
 
-## Status, November 25
+## Status, November 27
 
-Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, the start script (Ryan's Backend checklist in the [Team Plan](team-plan.md)), `app.js` (L2), and placeholder availability and settings routes, all pushed November 25. A2 and A4 needed no work because Step 13 already matches the prototype there. No other task is started.
+Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, the start script and real availability saving (Ryan's Backend checklist in the [Team Plan](team-plan.md)), `app.js` (L2), and Abou's Availability and Settings pages (V1–V5, T1–T3) and README start (R1, R3, R7). A2 and A4 needed no work because Step 13 already matches the prototype there. Ben's tasks are not started yet.
 
 The day each task is planned for is in the Schedule in the [Team Plan](team-plan.md) and in each checklist; the checklists ([Ben](ben.md), [Abou](abou.md)) also have step-by-step instructions and a "Done when" for every task. If we fall behind, cut E5, L5, D4, D5 and B9 first. If you swap tasks, tell Ryan so he can update the Owner column. Mark a task done by adding "(done)" after its owner.
 
@@ -74,11 +74,11 @@ Step 13's Availability is a static section of `dashboard.html`: Monday–Friday 
 
 | # | Task | Starts from | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
-| V1 | Availability page file | Section in `dashboard.html` | New `availability.html`: 7 rows Monday–Sunday with ids like `monday-start`; Mon–Thu 9–5, Fri 9–3, Sat and Sun "Unavailable"; "Save availability" button | M | | Abou |
-| V5 | Load `app.js` | | Create `availability.js` and `settings.js`; load `app.js` then each page's script; sidebar shows the real user | S | V1, T1 | Abou |
-| V4 | Row behaviour | | Unchecking shows "Unavailable"; end must be after start, with the message next to that day | S | V5 | Abou |
-| V2 | Load saved hours | | Fill the rows from `GET /api/availability` | S | V5 | Abou |
-| V3 | Save availability | | Send all 7 days to `PUT /api/availability`; show "Saved." or the error | M | V4 | Abou |
+| V1 | Availability page file | Section in `dashboard.html` | New `availability.html`: 7 rows Monday–Sunday with ids like `monday-start`; Mon–Thu 9–5, Fri 9–3, Sat and Sun "Unavailable"; "Save availability" button | M | | Abou (done) |
+| V5 | Load `app.js` | | Create `availability.js` and `settings.js`; load `app.js` then each page's script; sidebar shows the real user | S | V1, T1 | Abou (done) |
+| V4 | Row behaviour | | Unchecking shows "Unavailable"; end must be after start, with the message next to that day | S | V5 | Abou (done) |
+| V2 | Load saved hours | | Fill the rows from `GET /api/availability` | S | V5 | Abou (done) |
+| V3 | Save availability | | Send all 7 days to `PUT /api/availability`; show "Saved." or the error | M | V4 | Abou (done) |
 
 ## Settings (`settings.html`)
 
@@ -86,9 +86,9 @@ Step 13's Settings is a static section of `dashboard.html`: nothing loads or sav
 
 | # | Task | Starts from | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- | --- |
-| T1 | Settings page file | Section in `dashboard.html` | New `settings.html`: Eastern, Central and Pacific Time (US & Canada); initials avatar with "Profile photo" | S | | Abou |
-| T2 | Load settings | | Fill the four fields from `GET /api/settings` | S | V5 | Abou |
-| T3 | Save settings | Save button does nothing | Send to `PUT /api/settings`; show the error, or reload the page on success so the sidebar updates | M | T2 | Abou |
+| T1 | Settings page file | Section in `dashboard.html` | New `settings.html`: Eastern, Central and Pacific Time (US & Canada); initials avatar with "Profile photo" | S | | Abou (done) |
+| T2 | Load settings | | Fill the four fields from `GET /api/settings` | S | V5 | Abou (done) |
+| T3 | Save settings | Save button does nothing | Send to `PUT /api/settings`; show the error, or reload the page on success so the sidebar updates | M | T2 | Abou (done) |
 
 ## Public booking page (`booking.html`)
 
@@ -121,13 +121,13 @@ Step 13's booking page already works end to end: three-column card, calendar, ti
 
 | # | Task | Details | Size | Needs | Owner |
 | --- | --- | --- | --- | --- | --- |
-| R1 | Title, team names, description | Item 1: "SimpleSchedule", our three names, 2–3 sentences on what the app does | S | | Abou |
+| R1 | Title, team names, description | Item 1: "SimpleSchedule", our three names, 2–3 sentences on what the app does | S | | Abou (done) |
 | R2 | Screenshots of every required screen | Item 2: in a `screenshots` folder, shown in the README, once the UI is final | M | Most screens | Abou |
-| R3 | Technologies used | Item 3: HTML, CSS, JavaScript, Node.js, MongoDB (Atlas), Git and GitHub | S | | Abou |
+| R3 | Technologies used | Item 3: HTML, CSS, JavaScript, Node.js, MongoDB (Atlas), Git and GitHub | S | | Abou (done) |
 | R4 | Install and run steps | Item 4: clone, `npm install`, create `.env`, `npm start`; write it with Ryan | S | | Abou |
 | R5 | Live URL | Item 5: the Render URL | S | Ryan: deploy | Abou |
 | R6 | Test account | Item 6: an email and password the instructor can sign in with | S | Ryan: seed script | Abou |
-| R7 | Outside resources with links | Item 7: the teacher's snippets repo first, then docs pages, tutorials, AI tools; collect them from all three of us | S | | Abou |
+| R7 | Outside resources with links | Item 7: the teacher's snippets repo first, then docs pages, tutorials, AI tools; collect them from all three of us | S | | Abou (done) |
 
 ## Presentation and demo
 
