@@ -352,10 +352,8 @@ const DEFAULT_AVAILABILITY = [
 
 const DAY_NAMES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
-// GET /api/availability  — the signed-in user's weekly hours (all 7 days, Monday first)
-// PLACEHOLDER: always sends the defaults until real saving is in.
 async function handleGetAvailability(req, res, user) {
-  sendJson(res, 200, DEFAULT_AVAILABILITY);
+  sendJson(res, 200, user.availability || DEFAULT_AVAILABILITY);
 }
 
 async function handleSaveAvailability(req, res, user) {
