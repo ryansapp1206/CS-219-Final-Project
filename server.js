@@ -350,20 +350,29 @@ const DEFAULT_AVAILABILITY = [
   { day: "sunday", enabled: false, start: "09:00", end: "17:00" }
 ];
 
+// The 7 days in the order the page sends them (Monday first)
 const DAY_NAMES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
+// GET /api/availability  — the signed-in user's weekly hours (all 7 days, Monday first)
+// The week is saved on the user's own document, in its "availability" field.
+// An account that has never saved has no such field, so it gets the default hours.
 async function handleGetAvailability(req, res, user) {
   sendJson(res, 200, user.availability || DEFAULT_AVAILABILITY);
 }
 
+// PUT /api/availability  — save the weekly hours
+// The page already checks the times, but we check them AGAIN here. Never trust the browser!
 async function handleSaveAvailability(req, res, user) {
   const body = await readBody(req);
 
+  // a) It must be a list of exactly 7 days
   if (!Array.isArray(body) || body.length !== 7) {
     sendJson(res, 400, { error: "Please send all 7 days." });
     return;
   }
 
+  // b) Check each day, and build a clean copy to save.
+  //    We save this copy, not the body itself, so extra fields from the browser never reach the database.
   const week = [];
   for (let i = 0; i < 7; i++) {
     const item = body[i] || {};
@@ -375,11 +384,13 @@ async function handleSaveAvailability(req, res, user) {
       sendJson(res, 400, { error: "The days must be Monday to Sunday, in order." });
       return;
     }
+    // Only days that are turned on need real times
     if (enabled) {
       if (!/^\d{2}:\d{2}$/.test(start) || !/^\d{2}:\d{2}$/.test(end)) {
         sendJson(res, 400, { error: "Please enter a start and end time for every open day." });
         return;
       }
+      // "HH:MM" text with leading zeros compares in time order, so "09:00" < "17:00" works
       if (end <= start) {
         sendJson(res, 400, { error: "End time must be after start time." });
         return;
@@ -389,6 +400,7 @@ async function handleSaveAvailability(req, res, user) {
     week.push({ day: DAY_NAMES[i], enabled: enabled, start: start, end: end });
   }
 
+  // c) Save the week on this user's document ($set adds the field the first time)
   await db.collection("users").updateOne(
     { _id: user._id },
     { $set: { availability: week } }
