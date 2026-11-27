@@ -82,8 +82,8 @@ Your two screens become their own files. Until Friday they have no `<script>` ta
 
 ## Run the app (Ryan sent you the `.env` on November 25)
 
-- [ ] `git pull`, then save the `.env` file Ryan sent you in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
-- [ ] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`abou-test@example.com`).
+- [X] `git pull`, then save the `.env` file Ryan sent you in the same folder as `server.js`. Never commit it. (Finder and File Explorer hide files starting with a dot; VS Code shows it.)
+- [X] Run `npm install`, then `npm start`. Open http://localhost:3000 and create an account named after you (`abou-test@example.com`).
 
     **Done when:** you can sign in and see the Dashboard.
 
