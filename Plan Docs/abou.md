@@ -161,7 +161,7 @@ The routes already answer with placeholder data (pushed November 25), so you can
 
 ## Sunday, November 29: the booking flow
 
-Ryan changes `booking-info` on Sunday. Build against this example until he messages you. For a host and a date it will send:
+Ryan's `booking-info` change is in (November 27), so build against the real route. For a host and a date it sends:
 
 ```json
 { "name": "Alex Smith", "timezone": "Eastern Time (US & Canada)",
