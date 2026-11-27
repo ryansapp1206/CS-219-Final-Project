@@ -47,8 +47,12 @@ function showMessage(id, text) {
 // V2: fill the rows from the server's list
 async function loadAvailability() {
   try {
-    const days = await apiRequest("GET", "/api/availability");
-    days.forEach(function (item) {
+    const data = await apiRequest("GET", "/api/availability");
+    if (data && data.error) {
+      showMessage("availability-error", data.error);
+      return;
+    }
+    data.forEach(function (item) {
       $(item.day + "-enabled").checked = item.enabled;
       $(item.day + "-start").value = item.start;
       $(item.day + "-end").value = item.end;
@@ -79,7 +83,11 @@ async function saveAvailability() {
   });
 
   try {
-    await apiRequest("PUT", "/api/availability", days);
+    const data = await apiRequest("PUT", "/api/availability", days);
+    if (data && data.error) {
+      showMessage("availability-error", data.error);
+      return;
+    }
     showMessage("availability-notice", "Saved.");
   } catch (err) {
     showMessage("availability-error", err.message || "Could not save your hours.");
