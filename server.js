@@ -409,6 +409,12 @@ async function handleSaveAvailability(req, res, user) {
   sendJson(res, 200, week);
 }
 
+const TIMEZONES = [
+  "Eastern Time (US & Canada)",
+  "Central Time (US & Canada)",
+  "Pacific Time (US & Canada)"
+];
+
 // GET /api/settings  — the signed-in user's profile settings
 // PLACEHOLDER: name and email are real; timezone and meetingLink are examples.
 async function handleGetSettings(req, res, user) {
@@ -420,15 +426,38 @@ async function handleGetSettings(req, res, user) {
   });
 }
 
-// PUT /api/settings  — save the profile settings
-// PLACEHOLDER: doesn't save yet; sends the current values back.
 async function handleSaveSettings(req, res, user) {
-  sendJson(res, 200, {
-    name: user.name,
-    email: user.email,
-    timezone: "Eastern Time (US & Canada)",
-    meetingLink: "https://meet.example.com/alex"
-  });
+  const body = await readBody(req);
+  const name = String(body.name || "").trim();
+  const email = String(body.email || "").trim().toLowerCase();
+  const timezone = String(body.timezone || "");
+  const meetingLink = String(body.meetingLink || "").trim();
+
+  if (name.length < 2) {
+    sendJson(res, 400, { error: "Please enter your full name." });
+    return;
+  }
+  if (!isValidEmail(email)) {
+    sendJson(res, 400, { error: "Please enter a valid email address." });
+    return;
+  }
+  if (!TIMEZONES.includes(timezone)) {
+    sendJson(res, 400, { error: "Please choose a time zone." });
+    return;
+  }
+
+  const otherUser = await db.collection("users").findOne({ email: email, _id: { $ne: user._id } });
+  if (otherUser) {
+    sendJson(res, 409, { error: "An account with this email already exists." });
+    return;
+  }
+
+  await db.collection("users").updateOne(
+    { _id: user._id },
+    { $set: { name: name, email: email, timezone: timezone, meetingLink: meetingLink } }
+  );
+
+  sendJson(res, 200, { name: name, email: email, timezone: timezone, meetingLink: meetingLink });
 }
 
 // =========================================================
