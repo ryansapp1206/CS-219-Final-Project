@@ -28,12 +28,14 @@ The due date moved up to December 2, so the whole plan runs on the day-by-day Sc
 - `public/js/app.js` holds the shared signed-in code, and `dashboard.html` loads it (L2, pushed the evening of November 25).
 - `availability.html` and `settings.html` exist with their own scripts, load `app.js`, and load and save through the routes (Abou: V1–V5, T1–T3, November 27).
 - **Availability saves for real** (Ryan, November 27): `PUT /api/availability` checks the 7 days and saves them on the user's document; `GET` returns the saved week, or the default hours for an account that hasn't saved. A saved week survives a server restart.
+- **`booking-info` uses saved hours** (Ryan, November 27): it returns `name`, `timezone`, `meetingLink`, `openDays` and `freeTimes` (the day's 30-minute slots, booked ones removed; empty with no date or on a day off) instead of `takenTimes`. Abou can start B3–B5 and B7 against it.
 - **Settings save for real** (Ryan, November 27): `PUT /api/settings` checks the name, email and time zone, refuses an email another account uses, and saves all four fields on the user's document, so `/api/me` and sign-in use the new name and email. `GET` returns the saved values, or Eastern Time and an empty meeting link for an account that hasn't saved.
 - The README has its title, team, description, technologies and resources (Abou: R1, R3, R7, November 27).
 
 **Still open:**
 
-- `booking-info` still returns `takenTimes`, not `freeTimes`, `openDays`, `timezone` and `meetingLink`, and `book` doesn't check the host's hours.
+- `book` doesn't refuse times outside the host's hours yet (it does refuse double bookings).
+- `booking.js` still reads `takenTimes`, so the booking page shows its six fixed times with nothing blocked until Abou's B3–B5.
 - Dashboard and Appointments are still sections of one `dashboard.html`, and its sidebar still switches sections instead of linking to `availability.html` and `settings.html` (Ben's L1, due November 27). `appointments.html` and `reset.html` don't exist.
 - README items 2, 4, 5 and 6 (screenshots, install and run, live URL, test account).
 - No seed script or test account, and no live URL.
@@ -51,7 +53,7 @@ In plain terms: Ryan makes the app save and load data; Ben makes Sign in, Dashbo
 1. ~~Atlas database, `.env`, and the start script, then send teammates the `.env`~~ (done Wednesday, November 25).
 2. ~~`app.js`, then placeholder availability and settings routes~~ (both done November 25).
 3. ~~Real availability and settings saving~~ (both done November 27, a day early).
-4. Booking with saved hours (Sunday, November 29).
+4. Booking with saved hours: ~~`booking-info`~~ (done November 27), then `book` refusing times outside hours (Sunday, November 29).
 5. Seed script and test account, then the live URL on Render (Monday, November 30).
 6. Fix what the demo run turns up (Tuesday, December 1).
 
@@ -79,7 +81,7 @@ In plain terms: Ryan makes the app save and load data; Ben makes Sign in, Dashbo
 
 **Done when:** hours and settings save and are still there after a reload, and a guest can book a time.
 
-**Needs from Ryan:** only the `booking-info` change (Sunday) for B3–B5 and B7. The `.env` was sent, and `app.js` and the availability and settings placeholder routes are pushed (November 25), so V5, V2, V3, T2 and T3 don't wait on anything.
+**Needs from Ryan:** nothing now. The `booking-info` change for B3–B5 and B7 is in (November 27). The `.env` was sent, and `app.js` and the availability and settings placeholder routes are pushed (November 25), so V5, V2, V3, T2 and T3 don't wait on anything.
 
 ## Starting point
 
@@ -142,7 +144,7 @@ Ryan owns the backend. The two teammates split the frontend, README and presenta
 
 ## Schedule
 
-Everything is due **Wednesday, December 2**, so there's one week, and Thanksgiving is in it. Each day ends with something all three of us can check. The `.env`, `app.js` and the availability and settings placeholder routes went out on November 25, so the only thing Ben or Abou still waits on is the `booking-info` change (Sunday) for the booking page.
+Everything is due **Wednesday, December 2**, so there's one week, and Thanksgiving is in it. Each day ends with something all three of us can check. The `.env`, `app.js` and the availability and settings placeholder routes went out on November 25, and the `booking-info` change went in on November 27, so Ben and Abou don't wait on anything from Ryan.
 
 | Day | Ryan | Ben | Abou | Done when |
 | --- | --- | --- | --- | --- |
@@ -150,7 +152,7 @@ Everything is due **Wednesday, December 2**, so there's one week, and Thanksgivi
 | Thu, Nov 26 (Thanksgiving) | Off, or catch up | Off, or A1, L3 | Off, or T1, README R1, R3, R7 | |
 | Fri, Nov 27 | Nothing due (Friday's work was done early); real availability and settings saving (done) | L1 (split pages), L4 (sidebar) | V5 (load `app.js`), V4, B2 | Every page file exists, loads with no console errors, and the sidebar links work |
 | Sat, Nov 28 | Nothing due (real saving was done Friday); can start Sunday's booking work | D1, D2, D3 | V2, V3, T2, T3 (connect to the routes) | Hours and settings survive a reload |
-| Sun, Nov 29 | Booking with saved hours (`timezone`, `meetingLink`, `openDays`, `freeTimes`; refusing times outside hours) | E1–E4 | B3–B6 (booking page) | A guest can book a time inside the saved hours |
+| Sun, Nov 29 | `book` refusing times outside hours (`booking-info` done Friday) | E1–E4 | B3–B6 (booking page) | A guest can book a time inside the saved hours |
 | Mon, Nov 30 | Seed script and test account; deploy to Render | D4–D6; start slides P1, P2 | B7, B8; README R4 with Ryan, R5, R6 | Whole demo runs on the live URL |
 | Tue, Dec 1 | Fix bugs from the demo run | Fix bugs; P3, P4; screenshots of your pages | Fix bugs; Q2 fresh-clone test; R2 screenshots | Fresh clone works from the README; first rehearsal |
 | Wed, Dec 2 (due) | Final check, ZIP (U2) | Slides PDF (U3) | README final check (U4) | Submitted on Blackboard; second rehearsal |
@@ -178,7 +180,7 @@ Every route sends and returns JSON. "Sign-in" means the request carries `Authori
 | PUT | `/api/availability` | Yes | the 7 days | the saved days | Working (Nov 27): checks and saves the week; 400 with `{ error }` for bad days or times |
 | GET | `/api/settings` | Yes | nothing | name, email, timezone, meetingLink | Working (Nov 27): the saved values, or Eastern Time and an empty link if none saved |
 | PUT | `/api/settings` | Yes | name, email, timezone, meetingLink | the saved settings (name and email also change the account, so `/api/me`, sign-in and the booking link use them) | Working (Nov 27): checks and saves all four; 409 with `{ error }` if another account has the email |
-| GET | `/api/booking-info?host=EMAIL&date=YYYY-MM-DD` | No | nothing | name, timezone, meetingLink, openDays, freeTimes | Step 13 version only (returns name and takenTimes) |
+| GET | `/api/booking-info?host=EMAIL&date=YYYY-MM-DD` | No | nothing | name, timezone, meetingLink, openDays, freeTimes | Working (Nov 27): `freeTimes` from the saved hours, booked times removed |
 | POST | `/api/book` | No | hostEmail, date, time, guestName, guestEmail, notes | message | Step 13 version only (blocks double bookings, not times outside hours) |
 
 **Data shapes**
@@ -276,7 +278,7 @@ Work top to bottom, one commit per item. The teacher said we may use all of the 
 
 **4. Sunday, November 29: booking uses saved hours**
 
-- [ ] `booking-info` returns `name`, `timezone`, `meetingLink`, `openDays` and `freeTimes` (30-minute slots inside that day's hours, booked ones removed; empty when no date is sent or the day is off). **Done when:** a host with Friday 9–3 and a 10:00 booking gets `09:00`–`14:30` without `10:00` for a Friday
+- [x] `booking-info` (done November 27) returns `name`, `timezone`, `meetingLink`, `openDays` and `freeTimes` (30-minute slots inside that day's hours, booked ones removed; empty when no date is sent or the day is off). **Done when:** a host with Friday 9–3 and a 10:00 booking gets `09:00`–`14:30` without `10:00` for a Friday
 - [ ] `book` refuses a time outside the host's hours, as well as a double booking. **Done when:** booking Saturday for a host with weekends off returns an error. Message Abou when both are pushed
 
 **5. Monday, November 30: test account and live URL**

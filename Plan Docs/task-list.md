@@ -4,7 +4,7 @@ Updated November 25, 2026
 
 ## Status, November 27
 
-Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, the start script and real availability and settings saving (Ryan's Backend checklist in the [Team Plan](team-plan.md)), `app.js` (L2), and Abou's Availability and Settings pages (V1–V5, T1–T3) and README start (R1, R3, R7). A2 and A4 needed no work because Step 13 already matches the prototype there. Ben's tasks are not started yet.
+Everything is due **Wednesday, December 2**. Step 13's complete app is in the repo, and every task below starts from it. Done so far: Ryan's database setup, the `.env`, the start script, real availability and settings saving, and `booking-info` with saved hours (Ryan's Backend checklist in the [Team Plan](team-plan.md)), `app.js` (L2), and Abou's Availability and Settings pages (V1–V5, T1–T3) and README start (R1, R3, R7). A2 and A4 needed no work because Step 13 already matches the prototype there. Ben's tasks are not started yet.
 
 The day each task is planned for is in the Schedule in the [Team Plan](team-plan.md) and in each checklist; the checklists ([Ben](ben.md), [Abou](abou.md)) also have step-by-step instructions and a "Done when" for every task. If we fall behind, cut E5, L5, D4, D5 and B9 first. If you swap tasks, tell Ryan so he can update the Owner column. Mark a task done by adding "(done)" after its owner.
 
@@ -12,7 +12,7 @@ The day each task is planned for is in the Schedule in the [Team Plan](team-plan
 
 - **Starts from** says what Step 13 already has, so nobody rebuilds something that exists.
 - **Size** is a rough guess: S = under an hour, M = a few hours, L = a day or more.
-- **Needs** names what must be done first. "Route" means a backend route from Ryan; only the booking tasks still wait on one (the `booking-info` change, Sunday). You can build and style a screen before its route exists, then hook it up later.
+- **Needs** names what must be done first. "Route" means a backend route from Ryan; the last one the booking tasks waited on, the `booking-info` change, went in on November 27. You can build and style a screen before its route exists, then hook it up later.
 - **The look to match** is the [Figma prototype](https://violet-surly-41566398.figma.site/) for every screen.
 - Ryan's backend work is in the Backend checklist in the [Team Plan](team-plan.md) and isn't repeated here, except L2.
 
