@@ -350,16 +350,53 @@ const DEFAULT_AVAILABILITY = [
   { day: "sunday", enabled: false, start: "09:00", end: "17:00" }
 ];
 
+const DAY_NAMES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+
 // GET /api/availability  — the signed-in user's weekly hours (all 7 days, Monday first)
 // PLACEHOLDER: always sends the defaults until real saving is in.
 async function handleGetAvailability(req, res, user) {
   sendJson(res, 200, DEFAULT_AVAILABILITY);
 }
 
-// PUT /api/availability  — save the weekly hours
-// PLACEHOLDER: doesn't save yet; sends the defaults back.
 async function handleSaveAvailability(req, res, user) {
-  sendJson(res, 200, DEFAULT_AVAILABILITY);
+  const body = await readBody(req);
+
+  if (!Array.isArray(body) || body.length !== 7) {
+    sendJson(res, 400, { error: "Please send all 7 days." });
+    return;
+  }
+
+  const week = [];
+  for (let i = 0; i < 7; i++) {
+    const item = body[i] || {};
+    const enabled = item.enabled === true;
+    const start = String(item.start || "");
+    const end = String(item.end || "");
+
+    if (item.day !== DAY_NAMES[i]) {
+      sendJson(res, 400, { error: "The days must be Monday to Sunday, in order." });
+      return;
+    }
+    if (enabled) {
+      if (!/^\d{2}:\d{2}$/.test(start) || !/^\d{2}:\d{2}$/.test(end)) {
+        sendJson(res, 400, { error: "Please enter a start and end time for every open day." });
+        return;
+      }
+      if (end <= start) {
+        sendJson(res, 400, { error: "End time must be after start time." });
+        return;
+      }
+    }
+
+    week.push({ day: DAY_NAMES[i], enabled: enabled, start: start, end: end });
+  }
+
+  await db.collection("users").updateOne(
+    { _id: user._id },
+    { $set: { availability: week } }
+  );
+
+  sendJson(res, 200, week);
 }
 
 // GET /api/settings  — the signed-in user's profile settings
