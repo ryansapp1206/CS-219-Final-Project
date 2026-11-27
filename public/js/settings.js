@@ -24,6 +24,10 @@ function updateAvatar() {
 async function loadSettings() {
   try {
     const s = await apiRequest("GET", "/api/settings");
+    if (s && s.error) {
+      showSettingsMessage("error", s.error);
+      return;
+    }
     $("settings-name").value = s.name;
     $("settings-email").value = s.email;
     $("settings-timezone").value = s.timezone;
@@ -33,7 +37,6 @@ async function loadSettings() {
     showSettingsMessage("error", err.message || "Could not load your settings.");
   }
 }
-
 // T3: send the four fields; reload on success so the sidebar updates
 async function saveSettings(event) {
   event.preventDefault();
@@ -46,8 +49,12 @@ async function saveSettings(event) {
     meetingLink: $("settings-link").value.trim()
   };
 
-  try {
-    await apiRequest("PUT", "/api/settings", settings);
+   try {
+    const data = await apiRequest("PUT", "/api/settings", settings);
+    if (data && data.error) {
+      showSettingsMessage("error", data.error);
+      return;
+    }
     window.location.reload();
   } catch (err) {
     showSettingsMessage("error", err.message || "Could not save your settings.");
